@@ -4,5 +4,6 @@
   "start_url": "./",
   "display": "standalone",
   "background_color": "#10072d",
-  "theme_color": "#10072d"
+  "theme_color": "#10072d",
+  "description": "Free virtual coin slot game"
 }
