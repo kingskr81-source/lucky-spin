@@ -33,6 +33,22 @@ body[data-theme="rainbow"] .temple{background:linear-gradient(180deg,#7732a8,#34
 body[data-theme="food"] .brand h1{color:#ffd36a;text-shadow:0 3px #a83c13,0 6px #541044,0 0 20px #ff9d39}
 body[data-theme="jewels"] .brand h1{color:#8af5ff;text-shadow:0 3px #1457ad,0 6px #24105e,0 0 20px #55dcff}
 body[data-theme="rainbow"] .brand h1{color:#ffb6f2;text-shadow:0 3px #9b2ab5,0 6px #3c176c,0 0 20px #ff8ee7}
+
+/* V8 premium reel cabinet + illustrated symbols */
+.reel-frame{position:relative;border:6px ridge #f8d56a;border-radius:20px;background:linear-gradient(180deg,#08051c,#171044 48%,#08051c);padding:8px;box-shadow:inset 0 0 24px #000,0 0 0 2px #8c4bce,0 0 24px #f6b93b55}
+.reels{gap:5px}
+.reel{display:block;height:clamp(256px,calc(50vw + 16px),406px);overflow:hidden;min-width:0;border-radius:10px;position:relative;background:linear-gradient(90deg,#0008,#fff1 18%,#0000 50%,#fff1 82%,#0008)}
+.reel-strip{display:flex;flex-direction:column;gap:4px;will-change:transform;transform:translate3d(0,0,0)}
+.symbol{height:clamp(48px,10vw,78px);flex:0 0 clamp(48px,10vw,78px);display:grid;place-items:center;border-radius:10px;background:radial-gradient(circle at 35% 22%,#fff8d9 0,#f2d18a 35%,#b67a37 72%,#542a25 100%);border:2px solid #ffe6a0;box-shadow:inset 0 2px 7px #fff9,inset 0 -5px 10px #60351b66,0 3px 6px #000b;overflow:hidden;user-select:none;position:relative}
+.symbol:before{content:"";position:absolute;inset:3px;border:1px solid #fff8;border-radius:7px;pointer-events:none}
+.symbol svg{width:76%;height:76%;overflow:visible;filter:drop-shadow(0 3px 2px #3c1b2366)}
+.symbol.stopflash{animation:premiumLand .42s cubic-bezier(.2,.9,.25,1.2)}
+@keyframes premiumLand{0%{transform:translateY(-7px) scale(1.08);filter:brightness(1.7)}65%{transform:translateY(2px) scale(.97)}100%{transform:translateY(0) scale(1);filter:brightness(1)}}
+.symbol.hit{animation:premiumWin .72s ease-in-out 3;border-color:#fff6a1;box-shadow:0 0 0 2px #fff,0 0 20px #ffe44e, inset 0 0 15px #fff8;background:radial-gradient(circle,#fff9bd,#ffcc49 55%,#c86a24)}
+@keyframes premiumWin{50%{transform:scale(1.09);filter:brightness(1.45) saturate(1.25)}}
+.reel:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#10072299 0%,transparent 12%,transparent 88%,#10072299 100%)}
+.game-tab{border-radius:11px;text-transform:uppercase}
+
 .rewards{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:8px 0 13px}
 .reward{text-align:center;border:2px solid #ffd85a;border-radius:17px;padding:11px 6px;background:linear-gradient(145deg,#5b1d98,#1b0c4c);box-shadow:0 4px 0 #5b2116,inset 0 0 15px #ffcf4822}
 .reward:nth-child(2){border-color:#67efff;background:linear-gradient(145deg,#075e88,#1b0c4c)}
@@ -148,6 +164,49 @@ const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-
 function read(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
 function save(){data.history=data.history.slice(0,8);localStorage.setItem(KEY,JSON.stringify(data))}
 function today(){let d=new Date();return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`}
+
+const ICON_ART={
+'🍒':`<path d="M49 49C48 26 39 16 25 15M49 49C52 25 66 15 78 17" fill="none" stroke="#286b35" stroke-width="6" stroke-linecap="round"/><path d="M24 15Q39 1 52 13Q40 26 24 15" fill="#75b947" stroke="#347a36" stroke-width="2"/><circle cx="34" cy="62" r="19" fill="url(#red)" stroke="#a71938" stroke-width="3"/><circle cx="68" cy="62" r="19" fill="url(#red)" stroke="#a71938" stroke-width="3"/><ellipse cx="28" cy="54" rx="5" ry="8" fill="#fff9" transform="rotate(-30 28 54)"/>`,
+'🍋':`<path d="M17 51Q22 21 51 23Q79 20 84 50Q77 78 49 79Q22 78 17 51Z" fill="url(#yellow)" stroke="#c98718" stroke-width="3"/><path d="M48 25Q54 8 76 13Q71 30 48 25Z" fill="#69ae45" stroke="#387b35" stroke-width="2"/><path d="M28 43Q40 31 53 34" stroke="#fff9" stroke-width="5" stroke-linecap="round" fill="none"/>`,
+'🍇':`<path d="M49 22Q60 5 78 14Q72 31 54 29" fill="#74b34a" stroke="#39783b" stroke-width="3"/><path d="M49 25Q44 16 34 18" stroke="#4c8139" stroke-width="4" fill="none"/><g fill="url(#purple)" stroke="#52227f" stroke-width="2"><circle cx="34" cy="39" r="12"/><circle cx="55" cy="39" r="12"/><circle cx="24" cy="58" r="12"/><circle cx="45" cy="59" r="12"/><circle cx="66" cy="58" r="12"/><circle cx="35" cy="77" r="11"/><circle cx="55" cy="77" r="10"/></g>`,
+'🔔':`<path d="M21 65Q31 54 31 39Q32 17 51 17Q71 17 71 40Q71 55 82 65Z" fill="url(#gold)" stroke="#a75b17" stroke-width="3"/><path d="M16 67H85Q82 78 51 78Q20 78 16 67Z" fill="#ed9d29" stroke="#9b541b" stroke-width="3"/><circle cx="51" cy="83" r="7" fill="#f6c74a" stroke="#96501b" stroke-width="2"/><path d="M39 29Q46 22 55 25" stroke="#fff9" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+'🪙':`<circle cx="50" cy="51" r="37" fill="url(#gold)" stroke="#9b5b16" stroke-width="5"/><circle cx="50" cy="51" r="28" fill="none" stroke="#fff1a3" stroke-width="3"/><path d="M50 28V74M37 39H58Q68 42 58 51H40Q31 58 43 64H64" stroke="#9c5a18" stroke-width="5" fill="none" stroke-linecap="round"/>`,
+'💎':`<path d="M14 34L31 15H69L86 34L50 84Z" fill="url(#blue)" stroke="#1469aa" stroke-width="3"/><path d="M14 34H86L50 84Z" fill="#4bc8ff" opacity=".7"/><path d="M31 15L50 34L69 15M31 15L14 34M69 15L86 34M50 34V84" stroke="#e7ffff" stroke-width="3" fill="none"/>`,
+'💠':`<path d="M50 9L89 50L50 91L11 50Z" fill="url(#blue)" stroke="#1266b2" stroke-width="3"/><path d="M50 9V91M11 50H89M50 9L29 50L50 91L71 50Z" fill="none" stroke="#e4ffff" stroke-width="3"/>`,
+'🔷':`<path d="M50 10L87 50L50 90L13 50Z" fill="url(#blue)" stroke="#155ca8" stroke-width="4"/><path d="M50 10L50 90L13 50M50 10L87 50L50 90" fill="none" stroke="#d8ffff" stroke-width="3"/>`,
+'👑':`<path d="M15 34L32 48L50 19L68 48L85 34L78 76H22Z" fill="url(#gold)" stroke="#9a5317" stroke-width="4" stroke-linejoin="round"/><path d="M22 76H78V85H22Z" fill="#ef9c24" stroke="#9a5317" stroke-width="3"/><circle cx="15" cy="31" r="7" fill="#ff4f79"/><circle cx="50" cy="16" r="8" fill="#61e5ff"/><circle cx="85" cy="31" r="7" fill="#ff4f79"/>`,
+'💍':`<ellipse cx="50" cy="59" rx="26" ry="22" fill="none" stroke="url(#gold)" stroke-width="11"/><path d="M34 29L43 12H57L66 29L50 43Z" fill="url(#blue)" stroke="#fff1a8" stroke-width="3"/><path d="M43 12H57M34 29H66" stroke="#fff" stroke-width="3"/>`,
+'⭐':`<path d="M50 8L61 37L92 39L68 59L76 90L50 72L24 90L32 59L8 39L39 37Z" fill="url(#gold)" stroke="#b66a18" stroke-width="3" stroke-linejoin="round"/>`,
+'🎁':`<rect x="17" y="37" width="66" height="48" rx="7" fill="url(#red)" stroke="#9b2439" stroke-width="3"/><path d="M50 37V85M17 51H83" stroke="#ffe17a" stroke-width="8"/><path d="M50 37Q18 28 28 14Q40 5 50 37Q60 5 74 14Q83 29 50 37Z" fill="#ffd64b" stroke="#a86b16" stroke-width="3"/>`,
+'🍔':`<path d="M15 44Q17 16 50 16Q83 16 85 44Z" fill="url(#bun)" stroke="#a64e18" stroke-width="3"/><path d="M17 47H83L76 57H24Z" fill="#55a83e" stroke="#2c6c31" stroke-width="2"/><path d="M18 58H82L75 69H25Z" fill="#e13d36" stroke="#982b27" stroke-width="2"/><path d="M22 69H78Q78 84 64 84H36Q22 84 22 69Z" fill="url(#bun)" stroke="#a64e18" stroke-width="3"/><g fill="#fff0b0"><ellipse cx="36" cy="28" rx="2" ry="4"/><ellipse cx="51" cy="24" rx="2" ry="4"/><ellipse cx="66" cy="30" rx="2" ry="4"/></g>`,
+'🍟':`<path d="M27 25L38 12L45 48M45 18L53 8L58 48M62 18L70 11L70 48" stroke="#f6c33d" stroke-width="10" stroke-linecap="round"/><path d="M20 43H80L73 84H27Z" fill="url(#red)" stroke="#a92335" stroke-width="4"/><path d="M34 56L66 56" stroke="#fff2d5" stroke-width="4"/>`,
+'🍕':`<path d="M50 12L88 82Q50 68 12 82Z" fill="url(#gold)" stroke="#a84d18" stroke-width="4"/><path d="M50 12L50 68M50 12L29 76M50 12L71 76" stroke="#fff0a2" stroke-width="3"/><g fill="#c73537"><circle cx="41" cy="48" r="6"/><circle cx="62" cy="57" r="6"/><circle cx="51" cy="69" r="5"/></g>`,
+'🍜':`<path d="M18 47H82Q78 82 50 82Q22 82 18 47Z" fill="url(#red)" stroke="#a52e4c" stroke-width="4"/><path d="M21 48Q50 34 79 48" fill="none" stroke="#fff0c0" stroke-width="7"/><path d="M35 18L57 42M48 13L70 40" stroke="#a36b39" stroke-width="5" stroke-linecap="round"/><path d="M30 41Q45 28 61 42" stroke="#f4c76a" stroke-width="4" fill="none"/>`,
+'🍚':`<path d="M18 49H82Q78 82 50 82Q22 82 18 49Z" fill="url(#red)" stroke="#9e3151" stroke-width="4"/><path d="M25 49Q25 22 50 22Q75 22 75 49Z" fill="#fff8e8" stroke="#d6c9b5" stroke-width="3"/><g fill="#e9e0d0"><circle cx="39" cy="35" r="3"/><circle cx="54" cy="30" r="3"/><circle cx="64" cy="40" r="3"/></g>`,
+'🍣':`<rect x="16" y="35" width="68" height="39" rx="14" fill="#fff1d6" stroke="#b96c42" stroke-width="4"/><rect x="21" y="26" width="58" height="25" rx="12" fill="url(#red)" stroke="#9b263c" stroke-width="3"/><path d="M29 47Q50 31 71 47" stroke="#ffb1a5" stroke-width="5" fill="none"/><path d="M24 73H76" stroke="#347d4d" stroke-width="7"/>`,
+'🥟':`<path d="M15 65Q18 28 50 19Q82 28 85 65Q50 91 15 65Z" fill="url(#bun)" stroke="#b77a35" stroke-width="4"/><path d="M20 63Q50 76 80 63M28 53Q50 64 72 53M37 43Q50 49 63 43" stroke="#fff0c4" stroke-width="3" fill="none"/>`,
+'🍩':`<path d="M50 12C76 12 90 30 88 51C86 75 68 89 48 87C23 85 10 67 12 46C14 24 30 12 50 12Z" fill="url(#red)" stroke="#9d2e50" stroke-width="4"/><ellipse cx="50" cy="50" rx="13" ry="12" fill="#f3d29a" stroke="#a66a36" stroke-width="3"/><g stroke="#ffe78c" stroke-width="4" stroke-linecap="round"><path d="M31 30L37 35M64 25L68 31M73 62L79 66M30 65L36 60"/></g>`,
+'🌈':`<path d="M13 76A37 37 0 0 1 87 76" fill="none" stroke="#e83f66" stroke-width="12"/><path d="M23 76A27 27 0 0 1 77 76" fill="none" stroke="#ffb52f" stroke-width="10"/><path d="M33 76A17 17 0 0 1 67 76" fill="none" stroke="#44c6ef" stroke-width="9"/><path d="M8 80H92" stroke="#fff" stroke-width="5" stroke-linecap="round"/>`,
+'🍭':`<path d="M49 54L54 91" stroke="#fff0d0" stroke-width="7" stroke-linecap="round"/><circle cx="49" cy="34" r="25" fill="url(#red)" stroke="#a52d4a" stroke-width="4"/><path d="M33 24Q47 10 62 26Q71 38 57 50Q42 60 29 44" stroke="#fff1b9" stroke-width="7" fill="none"/>`,
+'⚡':`<path d="M55 8L20 55H45L36 91L81 39H55Z" fill="url(#gold)" stroke="#b66a19" stroke-width="4" stroke-linejoin="round"/>`,
+'💖':`<path d="M50 84Q5 54 18 28Q31 6 50 29Q69 6 82 28Q95 54 50 84Z" fill="url(#red)" stroke="#a72a55" stroke-width="4"/><path d="M30 29Q39 18 48 29" stroke="#fff9" stroke-width="5" fill="none" stroke-linecap="round"/>`
+};
+function symbolSVG(e){
+ const art=ICON_ART[e];
+ const defs=`<defs>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff6a5"/><stop offset=".45" stop-color="#ffc13c"/><stop offset="1" stop-color="#d66b16"/></linearGradient>
+ <linearGradient id="yellow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff28a"/><stop offset="1" stop-color="#f2a51f"/></linearGradient>
+ <linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9a88"/><stop offset=".5" stop-color="#ef3457"/><stop offset="1" stop-color="#a60f49"/></linearGradient>
+ <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e0a0ff"/><stop offset=".55" stop-color="#8839c9"/><stop offset="1" stop-color="#4a167d"/></linearGradient>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6ffff"/><stop offset=".45" stop-color="#53d6ff"/><stop offset="1" stop-color="#1267d3"/></linearGradient>
+ <linearGradient id="bun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe6a0"/><stop offset="1" stop-color="#d88a35"/></linearGradient>
+ </defs>`;
+ if(art)return `<svg viewBox="0 0 100 100" role="img" aria-label="${e}">${defs}${art}</svg>`;
+ // Remaining theme symbols get a polished, consistent illustrated medallion rather than a plain emoji tile.
+ return `<svg viewBox="0 0 100 100" role="img" aria-label="${e}">${defs}<circle cx="50" cy="50" r="39" fill="url(#purple)" stroke="#ffe5a0" stroke-width="4"/><circle cx="50" cy="50" r="32" fill="none" stroke="#fff8" stroke-width="2"/><text x="50" y="67" text-anchor="middle" font-size="48" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji">${e}</text></svg>`;
+}
+function paintSymbol(el,e){el.innerHTML=symbolSVG(e);el.dataset.symbol=e;}
+
 function pick(){let r=Math.random();if(r<.035)return '🎁';let pool=symbols.filter(s=>!s.bonus&&s.e!=='🎁');return pool[Math.floor(Math.random()*pool.length)].e}
 function update(){
  $('balance').textContent=fmt(data.balance);
@@ -157,7 +216,8 @@ function update(){
  $('bonus').disabled=left>0;$('bonusTimer').textContent=left>0?`${String(Math.floor(left/60000)).padStart(2,'0')}:${String(Math.floor(left/1000)%60).padStart(2,'0')}`:'READY TO COLLECT';
 }
 function build(){
- const host=$('reels');host.innerHTML=Array.from({length:5},(_,c)=>`<div class="reel" id="col${c}">${Array.from({length:5},(_,r)=>`<div class="symbol" id="cell${c}_${r}">${pick()}</div>`).join('')}</div>`).join('');
+ const host=$('reels');host.innerHTML=Array.from({length:5},(_,c)=>`<div class="reel" id="col${c}">${Array.from({length:5},(_,r)=>`<div class="symbol" id="cell${c}_${r}"></div>`).join('')}</div>`).join('');
+ for(let c=0;c<5;c++)for(let r=0;r<5;r++)paintSymbol($(`cell${c}_${r}`),pick());
 }
 function burst(){for(let i=0;i<65;i++){let e=document.createElement('i');e.className='confetti';e.style.left=Math.random()*100+'%';e.style.background=['#ffe45e','#ff4da6','#53f4ed','#fff','#a77bff'][i%5];e.style.setProperty('--x',(Math.random()*240-120)+'px');document.body.appendChild(e);setTimeout(()=>e.remove(),2400)}}
 function addHistory(win,label=''){let chip=document.createElement('span');chip.className='chip';chip.textContent=(label?label+' ':'')+(win?'+':'')+fmt(win);$('history').prepend(chip);while($('history').children.length>8)$('history').lastChild.remove();data.history.unshift({win,label});save()}
@@ -176,38 +236,56 @@ function scoreGrid(grid,bet,multiplier=1){
  for(let c=0;c<5;c++)for(let r=0;r<5;r++)if(grid[c][r]==='🎁')scatter++;
  return {win,winners,scatter};
 }
-function stopColumn(c,grid){for(let r=0;r<5;r++){let el=$(`cell${c}_${r}`);el.textContent=grid[c][r];el.classList.remove('rolling');el.classList.add('stopflash')}}
+function stopColumn(c,grid){
+ const reel=$(`col${c}`);
+ reel.innerHTML=Array.from({length:5},(_,r)=>`<div class="symbol stopflash" id="cell${c}_${r}"></div>`).join('');
+ for(let r=0;r<5;r++)paintSymbol($(`cell${c}_${r}`),grid[c][r]);
+}
 function spin(isFree=false){
  if(busy)return;
  const bet=isFree?bonusBet:+$('bet').value;
  if(!isFree&&data.balance<bet){$('message').textContent='Not enough coins — collect a gift or bonus first!';return}
  busy=true;$('spin').disabled=true;$('message').classList.add('wait');
- $('message').textContent=isFree?`🎁 FREE SPIN ${bonusRemaining} — multiplier bonus!`:'🎰 Reels spinning... watch them stop one by one!';
+ $('message').textContent=isFree?`🎁 FREE SPIN ${bonusRemaining} — bonus multiplier!`:'🎰 Reels in motion…';
  if(!isFree){data.balance-=bet;save();update()}
  const grid=Array.from({length:5},()=>Array.from({length:5},pick));
- const intervals=[];
+ const timers=[];
+ // Each reel is a real vertical strip: it rolls through a long symbol runway,
+ // then decelerates and lands on its preselected five-symbol result.
  for(let c=0;c<5;c++){
-  intervals[c]=setInterval(()=>{for(let r=0;r<5;r++)$(`cell${c}_${r}`).textContent=pick()},95);
-  for(let r=0;r<5;r++)$(`cell${c}_${r}`).classList.add('rolling');
+  const reel=$(`col${c}`);
+  const filler=Array.from({length:30},pick);
+  const strip=document.createElement('div');strip.className='reel-strip';strip.id=`strip${c}`;
+  strip.innerHTML=[...filler,...grid[c]].map((sym,j)=>`<div class="symbol" ${j>=30?`data-final="${j-30}"`:''}></div>`).join('');
+  reel.innerHTML='';reel.appendChild(strip);
+  [...strip.children].forEach((el,j)=>paintSymbol(el,j>=30?grid[c][j-30]:filler[j]));
  }
- // Slower reel-by-reel stop: 1.8s first reel, then 650ms per reel.
- for(let c=0;c<5;c++)setTimeout(()=>{clearInterval(intervals[c]);stopColumn(c,grid)},1800+c*650);
- const finish=1800+4*650+500;
+ requestAnimationFrame(()=>{
+  for(let c=0;c<5;c++){
+   const strip=$(`strip${c}`),first=strip.querySelector('.symbol');
+   const style=getComputedStyle(strip),gap=parseFloat(style.rowGap)||4;
+   const stride=first.getBoundingClientRect().height+gap;
+   const duration=1900+c*260;
+   strip.style.transition=`transform ${duration}ms cubic-bezier(.10,.72,.18,1)`;
+   strip.style.transform=`translate3d(0,${-(30*stride)}px,0)`;
+   timers[c]=setTimeout(()=>stopColumn(c,grid),duration+30);
+  }
+ });
+ const finish=1900+4*260+480;
  setTimeout(()=>{
   let multiplier=1;
   if(isFree){multiplier=multipliers[Math.floor(Math.random()*multipliers.length)];bonusRemaining--}
   const result=scoreGrid(grid,bet,multiplier);
   let win=result.win;
   result.winners.forEach(e=>e.classList.add('hit'));
-  // Small random jackpot chance, awarded as virtual coins only.
   let jackpot=false;
   if(Math.random()<0.004){jackpot=true;let prize=bet*100;win+=prize;$('message').textContent=`👑 JACKPOT! +${fmt(prize)} VIRTUAL COINS!`;burst()}
   data.balance+=win;data.bestWin=Math.max(data.bestWin,win);
   if(isFree){$('message').textContent=jackpot?$('message').textContent:`🎁 FREE SPIN ×${multiplier}! ${win?`WIN +${fmt(win)}`:'No match this round'}`;}
-  else if(!jackpot)$('message').textContent=win?`🏆 TREASURE WIN! +${fmt(win)} COINS!`:'✨ No match this time. The next spin could be lucky!';
+  else if(!jackpot)$('message').textContent=win?`🏆 WIN! +${fmt(win)} VIRTUAL COINS!`:'✨ No match this time. Try another spin!';
   if(win)burst();
   addHistory(win,isFree?'FREE':'');
-  if(!isFree&&result.scatter>=3){freeSpins=5;bonusBet=bet;bonusRemaining=5;$('bonusPanel').classList.add('show');$('bonusTitle').textContent='🎉 5 FREE SPINS UNLOCKED!';$('bonusText').textContent='You landed '+result.scatter+' gift symbols. Each free spin gets a random multiplier from ×8 up to ×500.';$('startBonus').disabled=false;}
+  if(!isFree&&result.scatter>=3){freeSpins=5;bonusBet=bet;bonusRemaining=5;$('bonusPanel').classList.add('show');$('bonusTitle').textContent='🎉 5 FREE SPINS UNLOCKED!';$('bonusText').textContent='You landed '+result.scatter+' gift symbols. Free spins use a random virtual multiplier from ×8 up to ×500.';$('startBonus').disabled=false;}
   $('message').classList.remove('wait');save();update();
   if(isFree&&bonusRemaining>0){
    $('bonusText').textContent=`${bonusRemaining} free spins remaining. Next free spin starting...`;
