@@ -21,6 +21,18 @@ body{margin:0;min-height:100vh;min-height:100dvh;overflow-x:hidden;overflow-y:au
 .brand{text-align:center;padding:3px 0 12px}.scarab{font-size:46px;filter:drop-shadow(0 0 12px #ffcf39)}
 .brand h1{margin:0;font-size:clamp(36px,8vw,58px);line-height:1;font-weight:1000;letter-spacing:2px;color:#ffdf65;text-shadow:0 3px #b83b16,0 6px #541044,0 0 20px #ffc13f}
 .brand p{margin:6px 0 0;font-size:11px;letter-spacing:4px;color:#ffe5a0;font-weight:900}
+.game-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:8px 0 13px}
+.game-tab{min-width:0;border:1px solid #a879ff;border-radius:12px;padding:10px 4px;background:linear-gradient(145deg,#54218c,#1c0a49);color:#eee1ff;font-size:clamp(9px,1.7vw,12px);font-weight:1000;letter-spacing:.2px;box-shadow:0 3px 0 #100523}
+.game-tab.active{border:2px solid #ffe16b;color:#fff7a6;background:linear-gradient(135deg,#a94a16,#6a1e92);box-shadow:0 0 15px #ffd34c88,0 3px 0 #18062d}
+body[data-theme="food"]{background:radial-gradient(ellipse at 50% 10%,#9a3d13 0,#572015 34%,#201039 72%,#08051c 100%)}
+body[data-theme="jewels"]{background:radial-gradient(ellipse at 50% 10%,#075d83 0,#20206a 35%,#160b40 72%,#07051b 100%)}
+body[data-theme="rainbow"]{background:radial-gradient(ellipse at 50% 10%,#77319c 0,#39206f 38%,#170b42 72%,#08051c 100%)}
+body[data-theme="food"] .temple{background:linear-gradient(180deg,#a64b17,#542014 40%,#241039 100%)}
+body[data-theme="jewels"] .temple{background:linear-gradient(180deg,#155e91,#22205d 40%,#100b36 100%)}
+body[data-theme="rainbow"] .temple{background:linear-gradient(180deg,#7732a8,#342078 40%,#130b3c 100%)}
+body[data-theme="food"] .brand h1{color:#ffd36a;text-shadow:0 3px #a83c13,0 6px #541044,0 0 20px #ff9d39}
+body[data-theme="jewels"] .brand h1{color:#8af5ff;text-shadow:0 3px #1457ad,0 6px #24105e,0 0 20px #55dcff}
+body[data-theme="rainbow"] .brand h1{color:#ffb6f2;text-shadow:0 3px #9b2ab5,0 6px #3c176c,0 0 20px #ff8ee7}
 .rewards{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:8px 0 13px}
 .reward{text-align:center;border:2px solid #ffd85a;border-radius:17px;padding:11px 6px;background:linear-gradient(145deg,#5b1d98,#1b0c4c);box-shadow:0 4px 0 #5b2116,inset 0 0 15px #ffcf4822}
 .reward:nth-child(2){border-color:#67efff;background:linear-gradient(145deg,#075e88,#1b0c4c)}
@@ -62,13 +74,19 @@ body{margin:0;min-height:100vh;min-height:100dvh;overflow-x:hidden;overflow-y:au
 .note{text-align:center;color:#bfb2dc;font-size:10px;line-height:1.6;padding:18px 8px 10px}
 .confetti{position:fixed;z-index:9;top:-15px;width:8px;height:14px;animation:fall 1.8s ease-in forwards;pointer-events:none}
 @keyframes fall{to{transform:translate(var(--x),110vh) rotate(720deg);opacity:0}}
-@media(max-width:520px){.app{padding-left:7px;padding-right:7px}.jackpots{grid-template-columns:1fr 1fr}.symbol{height:clamp(48px,15vw,67px)}.reel-frame{padding:5px}.info{grid-template-columns:1fr}.actionbar{gap:5px}.btn{padding:11px 3px;font-size:10px}}
+@media(max-width:520px){.game-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.game-tab{padding:9px 3px}.app{padding-left:7px;padding-right:7px}.jackpots{grid-template-columns:1fr 1fr}.symbol{height:clamp(48px,15vw,67px)}.reel-frame{padding:5px}.info{grid-template-columns:1fr}.actionbar{gap:5px}.btn{padding:11px 3px;font-size:10px}}
 </style>
 </head>
 <body>
 <main class="app">
 <div class="topbar"><button class="iconbtn" aria-label="Home">⌂</button><div class="balance"><small>🪙 COIN BALANCE</small><strong id="balance">0</strong></div><button class="store" id="sound">🔊 SOUND</button></div>
-<header class="brand"><div class="scarab">𓆣 ✨ 𓆣</div><h1>LUCKY SPIN</h1><p>TEMPLE OF FORTUNE</p></header>
+<header class="brand"><div class="scarab" id="brandIcon">𓆣 ✨ 𓆣</div><h1 id="brandTitle">LUCKY SPIN</h1><p id="brandSubtitle">TEMPLE OF FORTUNE</p></header>
+<nav class="game-tabs" aria-label="Choose a slot game">
+<button class="game-tab active" data-game="temple">𓆣 LUCKY SPIN</button>
+<button class="game-tab" data-game="food">🍔 FOOD FEAST</button>
+<button class="game-tab" data-game="jewels">💎 JEWELS</button>
+<button class="game-tab" data-game="rainbow">🌈 RAINBOW BLITZ</button>
+</nav>
 <section class="rewards">
 <div class="reward"><small>🎁 DAILY GIFT</small><strong>1 TRILLION</strong><button id="daily">CLAIM GIFT</button><div class="timer" id="dailyStatus">Available now</div></div>
 <div class="reward"><small>⏰ 30-MIN BONUS</small><strong>200 MILLION</strong><button id="bonus">COLLECT</button><div class="timer" id="bonusTimer">READY TO COLLECT</div></div>
@@ -99,17 +117,38 @@ body{margin:0;min-height:100vh;min-height:100dvh;overflow-x:hidden;overflow-y:au
 <script>
 const KEY='luckySpinV6',START={balance:0,dailyClaimedOn:'',nextBonusAt:0,bonusClaimedOnce:false,bestWin:0,history:[]};
 let data={...START,...read()},busy=false,freeSpins=0,bonusBet=0,bonusRemaining=0,bonusAuto=false;
-const symbols=[
- {e:'🍒',m:2},{e:'🍋',m:2},{e:'🍇',m:3},{e:'🍔',m:4},{e:'🍜',m:5},
- {e:'🍚',m:5},{e:'🍣',m:6},{e:'💎',m:8},{e:'👑',m:10},{e:'💍',m:12},
- {e:'💠',m:15},{e:'⭐',m:20},{e:'🎁',m:0,bonus:true}
-];
+const THEME_SYMBOLS={
+ temple:[
+  {e:'🍒',m:2},{e:'🍋',m:2},{e:'🍇',m:3},{e:'🔔',m:4},{e:'🪙',m:5},
+  {e:'🦂',m:6},{e:'💎',m:8},{e:'👑',m:10},{e:'💍',m:12},{e:'💠',m:15},{e:'⭐',m:20},{e:'🎁',m:0,bonus:true}
+ ],
+ food:[
+  {e:'🍟',m:2},{e:'🍔',m:3},{e:'🍕',m:4},{e:'🍜',m:5},{e:'🍚',m:6},
+  {e:'🍣',m:8},{e:'🥟',m:10},{e:'🍩',m:12},{e:'🧋',m:15},{e:'🍱',m:18},{e:'🍰',m:20},{e:'🎁',m:0,bonus:true}
+ ],
+ jewels:[
+  {e:'💠',m:2},{e:'🔷',m:3},{e:'💎',m:5},{e:'🔮',m:6},{e:'💍',m:8},
+  {e:'👑',m:10},{e:'🟣',m:12},{e:'🟢',m:15},{e:'🔴',m:18},{e:'🌟',m:20},{e:'💖',m:25},{e:'🎁',m:0,bonus:true}
+ ],
+ rainbow:[
+  {e:'🍬',m:2},{e:'🍭',m:3},{e:'🎈',m:4},{e:'🌈',m:6},{e:'🦄',m:8},
+  {e:'⚡',m:10},{e:'🌟',m:12},{e:'🎨',m:15},{e:'💜',m:18},{e:'💛',m:20},{e:'💫',m:25},{e:'🎁',m:0,bonus:true}
+ ]
+};
+const GAME_META={
+ temple:{title:'LUCKY SPIN',subtitle:'TEMPLE OF FORTUNE',icon:'𓆣 ✨ 𓆣',caption:'𓋹 TEMPLE OF FORTUNE • 5 REELS × 5 ROWS'},
+ food:{title:'FOOD FEAST',subtitle:'THE ULTIMATE FOOD PARTY',icon:'🍔 🍜 🍣',caption:'🍽️ FOOD FEAST • 5 REELS × 5 ROWS'},
+ jewels:{title:'JEWELS',subtitle:'DIAMOND TREASURE',icon:'💎 👑 💍',caption:'💎 JEWEL TREASURE • 5 REELS × 5 ROWS'},
+ rainbow:{title:'RAINBOW BLITZ',subtitle:'COLOUR UP YOUR FORTUNE',icon:'🌈 ✨ 🦄',caption:'🌈 RAINBOW BLITZ • 5 REELS × 5 ROWS'}
+};
+let activeTheme=localStorage.getItem('luckySpinTheme')||'temple';
+let symbols=THEME_SYMBOLS[activeTheme]||THEME_SYMBOLS.temple;
 const multipliers=[8,10,15,20,25,50,100,250,500];
 const $=id=>document.getElementById(id),fmt=n=>Math.floor(n).toLocaleString('en-US');
 function read(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
 function save(){data.history=data.history.slice(0,8);localStorage.setItem(KEY,JSON.stringify(data))}
 function today(){let d=new Date();return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`}
-function pick(){let r=Math.random();if(r<.025)return '🎁';if(r<.045)return '⭐';if(r<.075)return '💎';let pool=symbols.filter(s=>!s.bonus&&s.e!=='🎁');return pool[Math.floor(Math.random()*pool.length)].e}
+function pick(){let r=Math.random();if(r<.035)return '🎁';let pool=symbols.filter(s=>!s.bonus&&s.e!=='🎁');return pool[Math.floor(Math.random()*pool.length)].e}
 function update(){
  $('balance').textContent=fmt(data.balance);
  $('daily').disabled=data.dailyClaimedOn===today();$('daily').textContent=$('daily').disabled?'CLAIMED ✓':'CLAIM GIFT';
@@ -186,6 +225,19 @@ function spin(isFree=false){
   busy=false;$('spin').disabled=false;
  },finish);
 }
+function setTheme(name){
+ if(!THEME_SYMBOLS[name])return;
+ activeTheme=name;symbols=THEME_SYMBOLS[name];localStorage.setItem('luckySpinTheme',name);
+ document.body.dataset.theme=name;
+ const meta=GAME_META[name];
+ $('brandTitle').textContent=meta.title;$('brandSubtitle').textContent=meta.subtitle;$('brandIcon').textContent=meta.icon;
+ document.querySelector('.temple-caption').textContent=meta.caption+' • MATCH 3 OR MORE';
+ document.querySelectorAll('.game-tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.game===name));
+ build();
+ $('message').classList.remove('wait');
+ $('message').textContent=meta.title+' selected — same 5×5 machine, new symbols and theme!';
+}
+document.querySelectorAll('.game-tab').forEach(btn=>btn.addEventListener('click',()=>{if(busy)return;setTheme(btn.dataset.game)}));
 $('daily').onclick=()=>{if(data.dailyClaimedOn===today())return;data.balance+=1000000000000;data.dailyClaimedOn=today();save();update();$('message').textContent='🎁 1 TRILLION DAILY GIFT ADDED!';burst()};
 $('bonus').onclick=()=>{if(Date.now()<(data.nextBonusAt||0))return;data.balance+=200000000;data.bonusClaimedOnce=true;data.nextBonusAt=Date.now()+1800000;save();update();$('message').textContent='⏰ 200 MILLION BONUS COLLECTED! Next bonus in 30 minutes.';burst()};
 $('spin').onclick=()=>spin(false);
@@ -194,7 +246,7 @@ $('giftInfo').onclick=()=>$('message').textContent='Daily gift: 1T. Timed bonus:
 $('reset').onclick=()=>{if(busy)return;if(!confirm('Reset local coins, rewards and bonus progress?'))return;data={...START};freeSpins=0;bonusRemaining=0;bonusAuto=false;$('bonusPanel').classList.remove('show');$('history').innerHTML='<span class="chip">No spins yet</span>';build();save();update();$('message').textContent='Game reset. Claim your daily gift or bonus!'};
 $('sound').onclick=()=>$('message').textContent='Sound effects will be added in a future update.';
 if(!data.bonusClaimedOnce)data.nextBonusAt=0;
-build();update();save();setInterval(update,1000);
+document.body.dataset.theme=activeTheme;setTheme(activeTheme);build();update();save();setInterval(update,1000);
 // Use normal browser wheel/trackpad scrolling; do not hijack pointer movement.
 </script>
 </body></html>

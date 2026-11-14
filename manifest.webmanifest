@@ -1,9 +1,9 @@
 {
-  "name": "LUCKY SPIN - Temple of Fortune",
+  "name": "LUCKY SPIN Arcade",
   "short_name": "LUCKY SPIN",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#10072d",
   "theme_color": "#10072d",
-  "description": "Free virtual coin slot game"
+  "description": "Four free virtual-coin slot games in one arcade"
 }
