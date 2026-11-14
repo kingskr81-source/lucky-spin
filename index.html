@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10072d">
-<meta name="description" content="LUCKY SPIN — free virtual coin slot game">
+<meta name="description" content="LUCKY SPIN V10 — free virtual coin slot game">
 <link rel="manifest" href="manifest.webmanifest">
-<title>LUCKY SPIN — Temple of Fortune</title>
+<title>LUCKY SPIN V10 — Temple of Fortune</title>
 <style>
 :root{--gold:#ffd65a;--cyan:#58edff;--purple:#6b24d5}
 *{box-sizing:border-box}
@@ -211,6 +211,17 @@ body[data-theme="rainbow"] .brand h1{color:#ffb6f2;text-shadow:0 3px #9b2ab5,0 6
  .symbol.stopflash,.symbol.hit{animation:none}
 }
 
+
+/* V10: profile, bonus wheel, and responsive feature controls */
+.v10-tools{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.feature-btn{background:linear-gradient(135deg,#075e88,#51218d);border-color:#76edff}
+.profile-panel,.wheel-panel{display:none;margin:10px 0;padding:13px;border:2px solid #ffd85a;border-radius:17px;background:linear-gradient(145deg,#31116d,#10082f);box-shadow:0 0 18px #8c55ff44}
+.profile-panel.show,.wheel-panel.show{display:block;animation:pop .35s ease-out}
+.profile-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.profile-head small,.stats-grid small{display:block;color:#b9efff;font-size:9px;font-weight:900;letter-spacing:1px}.profile-head strong{display:block;color:#ffe777;font-size:22px}.xp-wrap{flex:1;max-width:55%;text-align:right}.xp-track{height:9px;background:#08051c;border:1px solid #8b69c9;border-radius:10px;overflow:hidden;margin-bottom:5px}.xp-track i{display:block;width:0;height:100%;background:linear-gradient(90deg,#48eaff,#ffe45c);transition:width .35s}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:13px 0}.stats-grid>div{padding:9px;border-radius:10px;background:#ffffff0c;border:1px solid #a879ff55}.stats-grid b{display:block;color:#fff17b;font-size:13px;overflow-wrap:anywhere}.profile-panel h3{font-size:11px;color:#ffe47b;letter-spacing:1px}.achievement-list{display:flex;flex-wrap:wrap;gap:6px}.achievement{font-size:10px;padding:6px 8px;border-radius:9px;background:#145b4a;border:1px solid #7affc2;color:#eafff3}.achievement.locked{background:#21163d;border-color:#68518e;color:#9d91b7}
+.wheel-panel{text-align:center;position:relative}.wheel-panel>strong{display:block;color:#ffe777;font-size:16px}.wheel-pointer{color:#fff3a0;font-size:22px;line-height:18px;position:relative;z-index:2}.wheel{width:min(240px,65vw);height:min(240px,65vw);margin:0 auto 10px;border:7px ridge #ffdc63;border-radius:50%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);align-items:center;justify-items:center;background:conic-gradient(#b83255 0 45deg,#5630b4 45deg 90deg,#087c92 90deg 135deg,#4b8a37 135deg 180deg,#b87918 180deg 225deg,#8a286c 225deg 270deg,#244c9b 270deg 315deg,#9b3d1e 315deg);box-shadow:0 0 22px #ffd34c66,inset 0 0 0 4px #fff5;transition:transform 3s cubic-bezier(.12,.75,.12,1)}.wheel span{font-size:11px;font-weight:1000;text-shadow:0 2px 4px #000;padding:5px}.wheel-panel p{font-size:11px;color:#bdfaff}.wheel-panel .btn{max-width:240px;width:100%}
+@media(max-width:430px){.v10-tools{grid-template-columns:1fr 1fr}.feature-btn{font-size:10px;padding:10px 3px}}
+
 </style>
 </head>
 <body>
@@ -228,10 +239,10 @@ body[data-theme="rainbow"] .brand h1{color:#ffb6f2;text-shadow:0 3px #9b2ab5,0 6
 <div class="reward"><small>⏰ 30-MIN BONUS</small><strong>200 MILLION</strong><button id="bonus">COLLECT</button><div class="timer" id="bonusTimer">READY TO COLLECT</div></div>
 </section>
 <section class="jackpots">
-<div class="jackpot"><b>👑 GRAND</b><strong>1,000,000,000,000</strong></div>
-<div class="jackpot"><b>💎 MAJOR</b><strong>100,000,000,000</strong></div>
-<div class="jackpot"><b>🔱 MINOR</b><strong>10,000,000,000</strong></div>
-<div class="jackpot"><b>✨ MINI</b><strong>1,000,000,000</strong></div>
+<div class="jackpot"><b>👑 GRAND</b><strong id="grandJackpot">1,000,000,000,000</strong></div>
+<div class="jackpot"><b>💎 MAJOR</b><strong id="majorJackpot">100,000,000,000</strong></div>
+<div class="jackpot"><b>🔱 MINOR</b><strong id="minorJackpot">10,000,000,000</strong></div>
+<div class="jackpot"><b>✨ MINI</b><strong id="miniJackpot">1,000,000,000</strong></div>
 </section>
 <section class="temple">
 <div class="runes">𓂀 𓆣 𓋹 𓆣 𓂀</div>
@@ -244,6 +255,22 @@ body[data-theme="rainbow"] .brand h1{color:#ffb6f2;text-shadow:0 3px #9b2ab5,0 6
 <div class="actionbar"><button class="btn" id="giftInfo">🎁 GIFTS</button><button class="btn spin" id="spin">⚡ SPIN ⚡</button><button class="btn" id="reset">↻ RESET</button></div>
 <div class="message" id="message" aria-live="polite">Claim your daily gift or collect your welcome bonus!</div>
 <section class="bonus-panel" id="bonusPanel"><strong id="bonusTitle">🎉 BONUS ROUND!</strong><p id="bonusText">Free spins are ready.</p><button class="btn" id="startBonus">START FREE SPINS</button></section>
+<section class="v10-tools">
+ <button class="btn feature-btn" id="wheelBtn">🎡 BONUS WHEEL</button>
+ <button class="btn feature-btn" id="profileBtn">👤 PLAYER PROFILE</button>
+</section>
+<section class="profile-panel" id="profilePanel" aria-live="polite">
+ <div class="profile-head"><div><small>PLAYER LEVEL</small><strong id="playerLevel">LEVEL 1</strong></div><div class="xp-wrap"><div class="xp-track"><i id="xpFill"></i></div><small id="xpText">0 / 500 XP</small></div></div>
+ <div class="stats-grid">
+  <div><small>TOTAL SPINS</small><b id="statSpins">0</b></div><div><small>TOTAL WAGERED</small><b id="statWagered">0</b></div>
+  <div><small>TOTAL WON</small><b id="statWon">0</b></div><div><small>BEST WIN</small><b id="statBest">0</b></div>
+ </div>
+ <h3>🏅 ACHIEVEMENTS</h3><div class="achievement-list" id="achievementList"><span class="achievement locked">First Spin · locked</span></div>
+</section>
+<section class="wheel-panel" id="wheelPanel" aria-label="Bonus prize wheel">
+ <strong>🎡 DAILY BONUS WHEEL</strong><div class="wheel-pointer">▼</div><div class="wheel" id="bonusWheel"><span>10M</span><span>25M</span><span>50M</span><span>100M</span><span>75M</span><span>200M</span><span>500M</span><span>1B</span></div>
+ <p id="wheelMessage">Spin once per day for a surprise virtual reward.</p><button class="btn spin" id="spinWheel">SPIN THE WHEEL</button>
+</section>
 <section class="info">
 <div class="infobox"><h3>🧾 RECENT SPINS</h3><div class="history" id="history"><span class="chip">No spins yet</span></div></div>
 <div class="infobox"><h3>🏆 PAYOUT & BONUS GUIDE</h3><p>3 in a row: <b>2×–25×</b></p><p>4 in a row: <b>4×–50×</b></p><p>5 in a row: <b>10×–125×</b></p><p>🎁 3+ bonus icons: 5 free spins</p><p>Free-spin multipliers: <b>8×, 10×, 15×, 20×, 25×, 50×, 100×, 250×, 500×</b></p><p>💎 Random virtual jackpot chance</p></div>
@@ -251,7 +278,7 @@ body[data-theme="rainbow"] .brand h1{color:#ffb6f2;text-shadow:0 3px #9b2ab5,0 6
 <p class="note">LUCKY SPIN is a free entertainment game. Coins and jackpots are fictional, have no cash value, and cannot be purchased, transferred or withdrawn. Rewards are stored locally in this browser.</p>
 </main>
 <script>
-const KEY='luckySpinV6',START={balance:0,dailyClaimedOn:'',nextBonusAt:0,bonusClaimedOnce:false,bestWin:0,history:[]};
+const KEY='luckySpinV6',START={balance:0,dailyClaimedOn:'',nextBonusAt:0,bonusClaimedOnce:false,bestWin:0,history:[],totalSpins:0,totalWagered:0,totalWon:0,xp:0,achievements:[],wheelClaimedOn:'',jackpots:{grand:1000000000000,major:100000000000,minor:10000000000,mini:1000000000}};
 let data={...START,...read()},busy=false,freeSpins=0,bonusBet=0,bonusRemaining=0,bonusAuto=false;
 const THEME_SYMBOLS={
  temple:[
@@ -327,7 +354,7 @@ function symbolSVG(e){
 }
 function paintSymbol(el,e){el.innerHTML=symbolSVG(e);el.dataset.symbol=e;}
 
-function pick(){let r=Math.random();if(r<.035)return '🎁';let pool=symbols.filter(s=>!s.bonus&&s.e!=='🎁');return pool[Math.floor(Math.random()*pool.length)].e}
+function pick(){let r=Math.random();if(r<.012)return '❔';if(r<.047)return '🎁';let pool=symbols.filter(s=>!s.bonus&&s.e!=='🎁');return pool[Math.floor(Math.random()*pool.length)].e}
 function update(){
  $('balance').textContent=fmt(data.balance);
  $('daily').disabled=data.dailyClaimedOn===today();$('daily').textContent=$('daily').disabled?'CLAIMED ✓':'CLAIM GIFT';
@@ -335,6 +362,23 @@ function update(){
  let left=Math.max(0,(data.nextBonusAt||0)-Date.now());
  $('bonus').disabled=left>0;$('bonusTimer').textContent=left>0?`${String(Math.floor(left/60000)).padStart(2,'0')}:${String(Math.floor(left/1000)%60).padStart(2,'0')}`:'READY TO COLLECT';
 }
+function playTone(freq=520,duration=.11,type='sine',volume=.045){
+ if(!soundOn)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;audioCtx=audioCtx||new C();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(freq,audioCtx.currentTime);g.gain.setValueAtTime(volume,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch(e){}
+}
+function vibrate(pattern=18){if(vibrationOn&&navigator.vibrate)navigator.vibrate(pattern)}
+function awardXP(amount){data.xp=(data.xp||0)+amount;let level=Math.floor(data.xp/500)+1;if(level>1&&level>(data._levelNotice||1)){$('message').textContent=`🌟 LEVEL UP! YOU REACHED LEVEL ${level}!`;data._levelNotice=level;burst();playTone(880,.3,'triangle') } }
+const ACHIEVEMENTS=[['first','First Spin','Complete your first spin',()=>data.totalSpins>=1],['lucky10','Getting Lucky','Complete 10 spins',()=>data.totalSpins>=10],['highroller','High Roller','Wager 1 billion coins',()=>data.totalWagered>=1000000000],['bigwin','Big Winner','Win 100 million coins in one spin',()=>data.bestWin>=100000000],['collector','Coin Collector','Win 1 billion coins total',()=>data.totalWon>=1000000000],['veteran','Slot Veteran','Complete 100 spins',()=>data.totalSpins>=100]];
+function updateProfile(){
+ const level=Math.floor((data.xp||0)/500)+1,progress=(data.xp||0)%500;
+ $('playerLevel').textContent='LEVEL '+level;$('xpFill').style.width=(progress/5)+'%';$('xpText').textContent=fmt(progress)+' / 500 XP';
+ $('statSpins').textContent=fmt(data.totalSpins||0);$('statWagered').textContent=fmt(data.totalWagered||0);$('statWon').textContent=fmt(data.totalWon||0);$('statBest').textContent=fmt(data.bestWin||0);
+ const list=$('achievementList');list.innerHTML='';ACHIEVEMENTS.forEach(([id,name,desc,test])=>{const earned=(data.achievements||[]).includes(id)||test();if(earned&&!(data.achievements||[]).includes(id)){data.achievements.push(id);save()}const el=document.createElement('span');el.className='achievement'+(earned?'':' locked');el.textContent=earned?'🏅 '+name:name+' · locked';el.title=desc;list.appendChild(el)});
+ const j=data.jackpots||START.jackpots;$('grandJackpot').textContent=fmt(j.grand);$('majorJackpot').textContent=fmt(j.major);$('minorJackpot').textContent=fmt(j.minor);$('miniJackpot').textContent=fmt(j.mini);
+}
+function addProgressiveContribution(bet){const j=data.jackpots||(data.jackpots={...START.jackpots});const add=Math.max(1,Math.floor(bet*.002));j.grand+=add*50;j.major+=add*20;j.minor+=add*5;j.mini+=add;}
+function payJackpot(bet){const r=Math.random();const j=data.jackpots||(data.jackpots={...START.jackpots});let tier='',prize=0;if(r<.000015){tier='GRAND';prize=j.grand;j.grand=1000000000000}else if(r<.00012){tier='MAJOR';prize=j.major;j.major=100000000000}else if(r<.0008){tier='MINOR';prize=j.minor;j.minor=10000000000}else if(r<.004){tier='MINI';prize=j.mini;j.mini=1000000000}return {tier,prize};}
+function claimWheel(){if(data.wheelClaimedOn===today())return;$('spinWheel').disabled=true;$('wheelMessage').textContent='The wheel is spinning...';$('bonusWheel').style.transform=`rotate(${1440+Math.floor(Math.random()*360)}deg)`;playTone(330,.18,'square');vibrate([25,35,25]);setTimeout(()=>{const prizes=[10000000,25000000,50000000,75000000,100000000,200000000,500000000,1000000000];const labels=['10 MILLION','25 MILLION','50 MILLION','75 MILLION','100 MILLION','200 MILLION','500 MILLION','1 BILLION'];const idx=Math.floor(Math.random()*prizes.length);data.balance+=prizes[idx];data.wheelClaimedOn=today();awardXP(50);save();update();updateProfile();$('wheelMessage').textContent=`🎉 YOU WON ${labels[idx]} VIRTUAL COINS!`; $('spinWheel').textContent='CLAIMED TODAY ✓';burst();playTone(740,.35,'triangle');vibrate([40,30,70]);},3100)}
+let soundOn=true,vibrationOn=true,audioCtx=null;
 function build(){
  const host=$('reels');host.innerHTML=Array.from({length:5},(_,c)=>`<div class="reel" id="col${c}">${Array.from({length:5},(_,r)=>`<div class="symbol" id="cell${c}_${r}"></div>`).join('')}</div>`).join('');
  for(let c=0;c<5;c++)for(let r=0;r<5;r++)paintSymbol($(`cell${c}_${r}`),pick());
@@ -369,6 +413,8 @@ function spin(isFree=false){
  $('message').textContent=isFree?`🎁 FREE SPIN ${bonusRemaining} — bonus multiplier!`:'🎰 Reels in motion…';
  if(!isFree){data.balance-=bet;save();update()}
  const grid=Array.from({length:5},()=>Array.from({length:5},pick));
+  let mysteryCount=0;for(let c=0;c<5;c++)for(let r=0;r<5;r++)if(grid[c][r]==='❔'){grid[c][r]=symbols.filter(x=>!x.bonus&&x.e!=='🎁')[Math.floor(Math.random()*symbols.filter(x=>!x.bonus&&x.e!=='🎁').length)].e;mysteryCount++;}
+  if(!isFree){data.totalSpins=(data.totalSpins||0)+1;data.totalWagered=(data.totalWagered||0)+bet;addProgressiveContribution(bet);}
  const timers=[];
  // Each reel is a real vertical strip: it rolls through a long symbol runway,
  // then decelerates and lands on its preselected five-symbol result.
@@ -403,10 +449,12 @@ function spin(isFree=false){
   data.balance+=win;data.bestWin=Math.max(data.bestWin,win);
   if(isFree){$('message').textContent=jackpot?$('message').textContent:`🎁 FREE SPIN ×${multiplier}! ${win?`WIN +${fmt(win)}`:'No match this round'}`;}
   else if(!jackpot)$('message').textContent=win?`🏆 WIN! +${fmt(win)} VIRTUAL COINS!`:'✨ No match this time. Try another spin!';
+   if(mysteryCount&&!jackpot)$('message').textContent+=' ❔ '+mysteryCount+' MYSTERY SYMBOL(S) REVEALED!';
+   playTone(win?760:300,win?.22:.09,win?'triangle':'sine');if(win)vibrate([25,30,50]);
   if(win)burst();
   addHistory(win,isFree?'FREE':'');
   if(!isFree&&result.scatter>=3){freeSpins=5;bonusBet=bet;bonusRemaining=5;$('bonusPanel').classList.add('show');$('bonusTitle').textContent='🎉 5 FREE SPINS UNLOCKED!';$('bonusText').textContent='You landed '+result.scatter+' gift symbols. Free spins use a random virtual multiplier from ×8 up to ×500.';$('startBonus').disabled=false;}
-  $('message').classList.remove('wait');save();update();
+  $('message').classList.remove('wait');save();update();updateProfile();
   if(isFree&&bonusRemaining>0){
    $('bonusText').textContent=`${bonusRemaining} free spins remaining. Next free spin starting...`;
    busy=false;$('spin').disabled=true;
@@ -442,9 +490,12 @@ $('spin').onclick=()=>spin(false);
 $('startBonus').onclick=()=>{if(busy||bonusRemaining<=0)return;bonusAuto=true;$('bonusPanel').classList.remove('show');spin(true)};
 $('giftInfo').onclick=()=>$('message').textContent='Daily gift: 1T. Timed bonus: 200M every 30 minutes. Match gift symbols to unlock free spins.';
 $('reset').onclick=()=>{if(busy)return;if(!confirm('Reset local coins, rewards and bonus progress?'))return;data={...START};freeSpins=0;bonusRemaining=0;bonusAuto=false;$('bonusPanel').classList.remove('show');$('history').innerHTML='<span class="chip">No spins yet</span>';build();save();update();$('message').textContent='Game reset. Claim your daily gift or bonus!'};
-$('sound').onclick=()=>$('message').textContent='Sound effects will be added in a future update.';
+$('sound').onclick=()=>{soundOn=!soundOn;$('sound').textContent=soundOn?'🔊 SOUND ON':'🔇 SOUND OFF';if(soundOn)playTone(660,.12)};
+ $('profileBtn').onclick=()=>{$('profilePanel').classList.toggle('show');updateProfile()};
+ $('wheelBtn').onclick=()=>{$('wheelPanel').classList.toggle('show');$('spinWheel').disabled=data.wheelClaimedOn===today();$('spinWheel').textContent=$('spinWheel').disabled?'CLAIMED TODAY ✓':'SPIN THE WHEEL';};
+ $('spinWheel').onclick=claimWheel;
 if(!data.bonusClaimedOnce)data.nextBonusAt=0;
-document.body.dataset.theme=activeTheme;setTheme(activeTheme);build();update();save();setInterval(update,1000);
+document.body.dataset.theme=activeTheme;setTheme(activeTheme);build();update();updateProfile();save();setInterval(()=>{update();updateProfile()},1000);
 // Use normal browser wheel/trackpad scrolling; do not hijack pointer movement.
 </script>
 </body></html>
