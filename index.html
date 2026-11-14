@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10072d">
-<meta name="description" content="LUCKY SPIN V13 — Royal virtual coin casino">
+<meta name="description" content="LUCKY SPIN V14 — Royal virtual coin casino">
 <link rel="manifest" href="manifest.webmanifest">
-<title>LUCKY SPIN V13 — Royal Casino</title>
+<title>LUCKY SPIN V14 — Royal Reel Experience</title>
 <style>
 :root{--gold:#ffd65a;--cyan:#58edff;--purple:#6b24d5}
 *{box-sizing:border-box}
@@ -504,6 +504,36 @@ body:before{
  .brand h1{font-size:clamp(29px,9vw,42px)}
 }
 
+
+/* V14 ROYAL REEL ENGINE — layered cabinet, optical depth and motion language */
+:root{--v14-gold:#ffe9a6;--v14-metal:#b77927;--v14-teal:#087d7b;--v14-plum:#130727}
+body{background:radial-gradient(ellipse at 50% 40%,#0a7475aa 0,transparent 36%),radial-gradient(ellipse at 50% -8%,#a45b2a66,transparent 34%),radial-gradient(ellipse at 5% 58%,#61258a66,transparent 38%),linear-gradient(145deg,#080513,#1b0b32 52%,#080513)}
+.temple{position:relative;border:4px solid transparent;background:linear-gradient(145deg,#075e62,#07394a 35%,#201039 78%,#10051f) padding-box,linear-gradient(135deg,#fff0b0,#9d5a1c 15%,#fff2a4 29%,#65379c 49%,#f5ce70 69%,#8a4b18) border-box;box-shadow:0 0 0 2px #6e3b91,0 0 0 6px #e7bd5a35,0 18px 40px #000d,inset 0 0 40px #8ffaff1b}
+.temple:before{content:"";position:absolute;inset:4px;border-radius:18px;pointer-events:none;background:linear-gradient(112deg,transparent 12%,#fff2 19%,transparent 26%,transparent 72%,#fff1 81%,transparent 88%);z-index:0}
+.reel-frame{position:relative;overflow:hidden;border:6px ridge #e8c36c;background:radial-gradient(ellipse at 50% 0,#2a1b48,#100821 48%,#05030d);box-shadow:inset 0 0 32px #000,0 0 0 2px #a46bd1,0 0 30px #e9b84c66,0 10px 20px #000b}
+.reel-frame:before,.reel-frame:after{content:"";position:absolute;z-index:5;left:0;right:0;height:10%;pointer-events:none}.reel-frame:before{top:0;background:linear-gradient(#05020de8,transparent)}.reel-frame:after{bottom:0;background:linear-gradient(transparent,#05020df0)}
+.reels{position:relative;isolation:isolate;background:linear-gradient(180deg,#05020e,#160b31 50%,#05020e);box-shadow:inset 0 0 28px #000}
+.reel{transform:translateZ(0);background:linear-gradient(90deg,#0009,#26174677 18%,#fff2 49%,#26174666 82%,#0009);box-shadow:inset 1px 0 #fff2,inset -1px 0 #000b}
+.reel-strip{display:flex;flex-direction:column;gap:4px;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
+.reel.spinning{box-shadow:inset 0 0 25px #51efff35,0 0 12px #51efff22}
+.reel.spinning .reel-strip{filter:blur(1.05px) saturate(1.25) brightness(1.12)}
+.reel.spinning .symbol svg{filter:blur(1px) drop-shadow(0 0 9px #fff9);transform:scale(.92) skewY(-3deg)}
+.reel.spinning:before{content:"";position:absolute;z-index:3;inset:-25% 0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 22px,#aafaff12 24px,#fff6 25px,transparent 29px);animation:v14Streak .13s linear infinite}
+@keyframes v14Streak{to{transform:translateY(32px)}}
+.symbol{transform:translateZ(0);will-change:transform,filter}.symbol svg{filter:drop-shadow(0 5px 4px #000e) drop-shadow(0 0 8px #ffdf8c66);transform:translateZ(0) scale(.98)}
+.symbol.stopflash{animation:v14Land .46s cubic-bezier(.16,1.32,.3,1) both}
+@keyframes v14Land{0%{transform:translateY(-13px) scale(.78);filter:brightness(2.1) blur(2px)}48%{transform:translateY(4px) scale(1.12);filter:brightness(1.7)}72%{transform:translateY(-2px) scale(.97)}100%{transform:translateY(0) scale(1);filter:brightness(1)}}
+.reel.landed{animation:v14Thump .2s ease-out}@keyframes v14Thump{0%{filter:brightness(1.6)}100%{filter:brightness(1)}}
+.payline-flash{position:absolute;z-index:6;left:1%;right:1%;height:2px;pointer-events:none;background:linear-gradient(90deg,transparent,#fff7b2 12%,#fff 50%,#fff0a0 88%,transparent);box-shadow:0 0 7px #fff,0 0 16px #ffcf47,0 0 28px #ff8c28;transform:scaleX(.2);opacity:0;transform-origin:center;animation:v14Payline .9s ease-out forwards}
+@keyframes v14Payline{15%{opacity:1;transform:scaleX(1)}75%{opacity:1}100%{opacity:0;transform:scaleX(1)}}
+.symbol.hit{animation:v14SymbolWin .72s ease-in-out 3}.symbol.hit svg{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 18px #ffe45b) drop-shadow(0 0 32px #ff8d25)}
+@keyframes v14SymbolWin{0%,100%{transform:scale(1)}50%{transform:scale(1.2);filter:brightness(1.75)}}
+.btn.spin{position:relative;overflow:hidden}.btn.spin:after{content:"";position:absolute;top:-80%;left:-40%;width:35%;height:260%;transform:rotate(24deg);background:linear-gradient(90deg,transparent,#fff8,transparent);animation:v14Sheen 4.2s ease-in-out infinite}
+@keyframes v14Sheen{0%,65%{left:-45%}100%{left:125%}}
+.jackpot{position:relative;overflow:hidden}.jackpot:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 25%,#fff3 48%,transparent 65%);transform:translateX(-130%);animation:v14JackSheen 7s ease-in-out infinite}
+@keyframes v14JackSheen{0%,70%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+@media(prefers-reduced-motion:reduce){.reel.spinning:before,.btn.spin:after,.jackpot:after,.symbol.stopflash,.symbol.hit,.payline-flash{animation:none}}
+
 </style>
 </head>
 <body>
@@ -736,17 +766,14 @@ function startRoyalAmbience(){
 function stopRoyalAmbience(){if(royalMusicTimer){clearInterval(royalMusicTimer);royalMusicTimer=null}}
 function playSpinStart(){
  if(!soundOn)return;const ctx=ensureAudio();if(!ctx)return;
- try{const t=ctx.currentTime,o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(95,t);o.frequency.exponentialRampToValueAtTime(620,t+.42);o.frequency.exponentialRampToValueAtTime(180,t+1.5);f.type='lowpass';f.frequency.setValueAtTime(900,t);f.frequency.linearRampToValueAtTime(2600,t+.5);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.035,t+.12);g.gain.exponentialRampToValueAtTime(.001,t+1.55);o.connect(f);f.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+1.58)}catch(e){}
+ try{const t=ctx.currentTime,o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(68,t);o.frequency.exponentialRampToValueAtTime(520,t+.48);o.frequency.exponentialRampToValueAtTime(155,t+1.85);f.type='lowpass';f.frequency.setValueAtTime(380,t);f.frequency.exponentialRampToValueAtTime(2500,t+.55);f.frequency.exponentialRampToValueAtTime(850,t+1.8);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.027,t+.14);g.gain.exponentialRampToValueAtTime(.0001,t+1.9);o.connect(f);f.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+1.92);playTone(330,.16,'triangle',.012,.02)}catch(e){}
 }
 function playReelStop(col){
- if(!soundOn)return;const base=440+col*72;playTone(base,.13,'triangle',.035);playTone(base*1.5,.09,'sine',.012,.035);
+ if(!soundOn)return;const ctx=ensureAudio();if(!ctx)return;const base=[392,440,494,587,659][col%5];
+ try{[1,2.01,3.9].forEach((ratio,i)=>{const t=ctx.currentTime+i*.004,o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(base*ratio,t);f.type='lowpass';f.frequency.value=5200;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime([.042,.014,.007][i],t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+[.42,.2,.14][i]);o.connect(f);f.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.45)})}catch(e){}
 }
-function playWinFanfare(){
- if(!soundOn)return;[523.25,659.25,783.99,1046.5].forEach((n,i)=>playTone(n,.28,'triangle',.045,i*.105));
-}
-function playJackpotFanfare(){
- if(!soundOn)return;[392,523.25,659.25,783.99,1046.5,1318.5].forEach((n,i)=>playTone(n,.42,'triangle',.055,i*.14));
-}
+function playWinFanfare(){if(!soundOn)return;[523.25,659.25,783.99,1046.5].forEach((n,i)=>playTone(n,.32,'triangle',.04,i*.105));}
+function playJackpotFanfare(){if(!soundOn)return;[392,523.25,659.25,783.99,1046.5,1318.5].forEach((n,i)=>playTone(n,.48,'triangle',.052,i*.13));}
 function vibrate(pattern=18){if(vibrationOn&&navigator.vibrate)navigator.vibrate(pattern)}
 function awardXP(amount){data.xp=(data.xp||0)+amount;let level=Math.floor(data.xp/500)+1;if(level>1&&level>(data._levelNotice||1)){$('message').textContent=`🌟 LEVEL UP! YOU REACHED LEVEL ${level}!`;data._levelNotice=level;burst();playTone(880,.3,'triangle') } }
 const ACHIEVEMENTS=[['first','First Spin','Complete your first spin',()=>data.totalSpins>=1],['lucky10','Getting Lucky','Complete 10 spins',()=>data.totalSpins>=10],['highroller','High Roller','Wager 1 billion coins',()=>data.totalWagered>=1000000000],['bigwin','Big Winner','Win 100 million coins in one spin',()=>data.bestWin>=100000000],['collector','Coin Collector','Win 1 billion coins total',()=>data.totalWon>=1000000000],['veteran','Slot Veteran','Complete 100 spins',()=>data.totalSpins>=100]];
@@ -785,77 +812,84 @@ function scoreGrid(grid,bet,multiplier=1){
  for(let c=0;c<5;c++)for(let r=0;r<5;r++)if(grid[c][r]==='🎁')scatter++;
  return {win,winners,scatter};
 }
-function stopColumn(c,grid){
+function stopColumn(c,gridColumn){
  const reel=$(`col${c}`);reel.classList.remove('spinning');playReelStop(c);
  reel.innerHTML=Array.from({length:5},(_,r)=>`<div class="symbol stopflash" id="cell${c}_${r}"></div>`).join('');
- for(let r=0;r<5;r++)paintSymbol($(`cell${c}_${r}`),grid[c][r]);
+ for(let r=0;r<5;r++)paintSymbol($(`cell${c}_${r}`),gridColumn[r]);
 }
-function spin(isFree=false){
+function animateReelColumn(c,gridColumn,runway=48){
+ return new Promise(resolve=>{
+  const reel=$(`col${c}`);reel.classList.add('spinning');
+  const filler=Array.from({length:runway},pick);
+  const strip=document.createElement('div');strip.className='reel-strip';strip.id=`strip${c}`;
+  strip.innerHTML=Array.from({length:runway+5},()=>'<div class="symbol"></div>').join('');
+  reel.innerHTML='';reel.appendChild(strip);
+  [...strip.children].forEach((el,j)=>paintSymbol(el,j<runway?filler[j]:gridColumn[j-runway]));
+  requestAnimationFrame(()=>{
+   const first=strip.firstElementChild;
+   const gap=parseFloat(getComputedStyle(strip).gap)||4;
+   const stride=first.getBoundingClientRect().height+gap;
+   const distance=runway*stride,duration=2450+c*390,start=performance.now()+c*115;
+   const ramp=.18,cruiseEnd=.82,normalizer=.82;
+   function easedTravel(t){
+    if(t<=0)return 0;if(t>=1)return 1;
+    let v;
+    if(t<ramp){const u=t/ramp;v=ramp*(u*u*u-.5*u*u*u*u)}
+    else if(t<cruiseEnd){v=.5*ramp+(t-ramp)}
+    else{const u=(t-cruiseEnd)/ramp;v=.5*ramp+(cruiseEnd-ramp)+ramp*(u-u*u*u+.5*u*u*u*u)}
+    return Math.min(1,v/normalizer)
+   }
+   function frame(now){
+    const t=Math.min(1,Math.max(0,(now-start)/duration));
+    strip.style.transform=`translate3d(0,${-distance*easedTravel(t)}px,0)`;
+    if(t<1){requestAnimationFrame(frame);return}
+    strip.style.transition='transform 150ms cubic-bezier(.18,.9,.25,1)';
+    strip.style.transform=`translate3d(0,${-(distance+5)}px,0)`;
+    requestAnimationFrame(()=>{strip.style.transform=`translate3d(0,${-distance}px,0)`;setTimeout(()=>{
+     stopColumn(c,gridColumn);reel.classList.add('landed');setTimeout(()=>reel.classList.remove('landed'),240);resolve();
+    },160)})
+   }
+   requestAnimationFrame(frame)
+  })
+ })
+}
+function showWinningPaylines(winners){
+ const rows=[...new Set(winners.map(el=>{const m=el.id.match(/_(\d+)$/);return m?Number(m[1]):null}).filter(v=>v!==null))];
+ const host=$('reels');host.querySelectorAll('.payline-flash').forEach(el=>el.remove());
+ rows.forEach(r=>{const line=document.createElement('i');line.className='payline-flash';line.style.top=`${((r+.5)/5)*100}%`;host.appendChild(line);setTimeout(()=>line.remove(),1000)})
+}
+async function spin(isFree=false){
  if(busy)return;
  const bet=isFree?bonusBet:+$('bet').value;
  if(!isFree&&data.balance<bet){$('message').textContent='Not enough coins — collect a gift or bonus first!';return}
  busy=true;$('spin').disabled=true;$('message').classList.add('wait');playSpinStart();
- $('message').textContent=isFree?`🎁 FREE SPIN ${bonusRemaining} — bonus multiplier!`:'🎰 Reels in motion…';
+ $('message').textContent=isFree?`🎁 FREE SPIN ${bonusRemaining} — bonus multiplier!`:'🎰 Reels accelerating…';
  if(!isFree){if(autoPlayActive&&!autoPlayUnlimited)autoPlayRemaining=Math.max(0,autoPlayRemaining-1);data.balance-=bet;save();update()}
  const grid=Array.from({length:5},()=>Array.from({length:5},pick));
-  let mysteryCount=0;for(let c=0;c<5;c++)for(let r=0;r<5;r++)if(grid[c][r]==='❔'){grid[c][r]=symbols.filter(x=>!x.bonus&&x.e!=='🎁')[Math.floor(Math.random()*symbols.filter(x=>!x.bonus&&x.e!=='🎁').length)].e;mysteryCount++;}
-  if(!isFree){data.totalSpins=(data.totalSpins||0)+1;data.totalWagered=(data.totalWagered||0)+bet;addProgressiveContribution(bet);}
- const timers=[];
- // Each reel is a real vertical strip: it rolls through a long symbol runway,
- // then decelerates and lands on its preselected five-symbol result.
- for(let c=0;c<5;c++){
-  const reel=$(`col${c}`);reel.classList.add('spinning');
-  const filler=Array.from({length:42},pick);
-  const strip=document.createElement('div');strip.className='reel-strip';strip.id=`strip${c}`;
-  strip.innerHTML=[...filler,...grid[c]].map((sym,j)=>`<div class="symbol" ${j>=42?`data-final="${j-42}"`:''}></div>`).join('');
-  reel.innerHTML='';reel.appendChild(strip);
-  [...strip.children].forEach((el,j)=>paintSymbol(el,j>=42?grid[c][j-42]:filler[j]));
+ let mysteryCount=0;
+ for(let c=0;c<5;c++)for(let r=0;r<5;r++)if(grid[c][r]==='❔'){
+  const pool=symbols.filter(x=>!x.bonus&&x.e!=='🎁');grid[c][r]=pool[Math.floor(Math.random()*pool.length)].e;mysteryCount++
  }
- requestAnimationFrame(()=>{
-  for(let c=0;c<5;c++){
-   const strip=$(`strip${c}`),first=strip.querySelector('.symbol');
-   const style=getComputedStyle(strip),gap=parseFloat(style.rowGap)||4;
-   const stride=first.getBoundingClientRect().height+gap;
-   const duration=2350+c*390;
-   strip.style.transition=`transform ${duration}ms cubic-bezier(.10,.72,.18,1)`;
-   strip.style.transform=`translate3d(0,${-(42*stride)}px,0)`;
-   timers[c]=setTimeout(()=>stopColumn(c,grid),duration+30);
-  }
- });
- const finish=2350+4*390+620;
- setTimeout(()=>{
-  let multiplier=1;
-  if(isFree){multiplier=multipliers[Math.floor(Math.random()*multipliers.length)];bonusRemaining--}
-  const result=scoreGrid(grid,bet,multiplier);
-  let win=result.win;
-  result.winners.forEach(e=>e.classList.add('hit'));
-  let jackpot=false;
-  if(Math.random()<0.004){jackpot=true;let prize=bet*100;win+=prize;$('message').textContent=`👑 JACKPOT! +${fmt(prize)} VIRTUAL COINS!`;burst();playJackpotFanfare()}
+ if(!isFree){data.totalSpins=(data.totalSpins||0)+1;data.totalWagered=(data.totalWagered||0)+bet;addProgressiveContribution(bet)}
+ try{
+  await Promise.all(Array.from({length:5},(_,c)=>animateReelColumn(c,grid[c],48)));
+  let multiplier=1;if(isFree){multiplier=multipliers[Math.floor(Math.random()*multipliers.length)];bonusRemaining--}
+  const result=scoreGrid(grid,bet,multiplier);let win=result.win;
+  result.winners.forEach(el=>el.classList.add('hit'));if(result.winners.length)showWinningPaylines(result.winners);
+  const jackpotResult=payJackpot(bet);let jackpot=false;
+  if(jackpotResult.prize>0){jackpot=true;win+=jackpotResult.prize;$('message').textContent=`👑 ${jackpotResult.tier} JACKPOT! +${fmt(jackpotResult.prize)} VIRTUAL COINS!`;burst();playJackpotFanfare()}
   data.balance+=win;data.bestWin=Math.max(data.bestWin,win);
-  if(isFree){$('message').textContent=jackpot?$('message').textContent:`🎁 FREE SPIN ×${multiplier}! ${win?`WIN +${fmt(win)}`:'No match this round'}`;}
+  if(isFree){if(!jackpot)$('message').textContent=`🎁 FREE SPIN ×${multiplier}! ${win?`WIN +${fmt(win)}`:'No match this round'}`}
   else if(!jackpot)$('message').textContent=win?`🏆 WIN! +${fmt(win)} VIRTUAL COINS!`:'✨ No match this time. Try another spin!';
-   if(mysteryCount&&!jackpot)$('message').textContent+=' ❔ '+mysteryCount+' MYSTERY SYMBOL(S) REVEALED!';
-   if(win)playWinFanfare();else playTone(310,.12,'sine',.025);if(win)vibrate([25,30,50]);
-  if(win)burst();
-  if(win){data.totalWon=(data.totalWon||0)+win;}awardXP(isFree?10:20);if(win)awardXP(Math.min(100,Math.max(5,Math.floor(win/Math.max(1,bet)*10))));addHistory(win,isFree?'FREE':'');
-  if(!isFree&&result.scatter>=3){if(autoPlayActive)stopAutoPlay('AUTO PLAY PAUSED · BONUS ROUND UNLOCKED');freeSpins=5;bonusBet=bet;bonusRemaining=5;$('bonusPanel').classList.add('show');$('bonusTitle').textContent='🎉 5 FREE SPINS UNLOCKED!';$('bonusText').textContent='You landed '+result.scatter+' gift symbols. Free spins use a random virtual multiplier from ×8 up to ×500.';$('startBonus').disabled=false;}
+  if(mysteryCount&&!jackpot)$('message').textContent+=' ❔ '+mysteryCount+' MYSTERY SYMBOL(S) REVEALED!';
+  if(win){playWinFanfare();vibrate([25,30,50]);burst();data.totalWon=(data.totalWon||0)+win}else playTone(310,.12,'sine',.025);
+  awardXP(isFree?10:20);if(win)awardXP(Math.min(100,Math.max(5,Math.floor(win/Math.max(1,bet)*10))));addHistory(win,isFree?'FREE':'');
+  if(!isFree&&result.scatter>=3){if(autoPlayActive)stopAutoPlay('AUTO PLAY PAUSED · BONUS ROUND UNLOCKED');freeSpins=5;bonusBet=bet;bonusRemaining=5;$('bonusPanel').classList.add('show');$('bonusTitle').textContent='🎉 5 FREE SPINS UNLOCKED!';$('bonusText').textContent='You landed '+result.scatter+' gift symbols. Free spins use a random virtual multiplier from ×8 up to ×500.';$('startBonus').disabled=false}
   $('message').classList.remove('wait');save();update();updateProfile();
-  if(isFree&&bonusRemaining>0){
-   $('bonusText').textContent=`${bonusRemaining} free spins remaining. Next free spin starting...`;
-   busy=false;$('spin').disabled=true;
-   if(bonusAuto)setTimeout(()=>spin(true),950);
-   else $('spin').disabled=false;
-   return;
-  }
-  if(isFree&&bonusRemaining===0){
-   $('bonusTitle').textContent='🎊 BONUS ROUND COMPLETE';
-   $('bonusText').textContent='Your free-spin winnings have been added to your coin balance.';
-   $('startBonus').textContent='BONUS COMPLETE';$('startBonus').disabled=true;
-   freeSpins=0;bonusAuto=false;
-  }
-  busy=false;$('spin').disabled=false;
-  if(!isFree&&autoPlayActive)queueAutoPlay();
- },finish);
+  if(isFree&&bonusRemaining>0){$('bonusText').textContent=`${bonusRemaining} free spins remaining. Next free spin starting...`;busy=false;$('spin').disabled=true;if(bonusAuto)setTimeout(()=>spin(true),950);else $('spin').disabled=false;return}
+  if(isFree&&bonusRemaining===0){$('bonusTitle').textContent='🎊 BONUS ROUND COMPLETE';$('bonusText').textContent='Your free-spin winnings have been added to your coin balance.';$('startBonus').textContent='BONUS COMPLETE';$('startBonus').disabled=true;freeSpins=0;bonusAuto=false}
+ }catch(err){console.error('V14 reel engine error',err);$('message').textContent='Reel animation issue — please try another spin.'}
+ busy=false;$('spin').disabled=false;if(!isFree&&autoPlayActive)queueAutoPlay()
 }
 function setTheme(name){
  if(!THEME_SYMBOLS[name])return;
