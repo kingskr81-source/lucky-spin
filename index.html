@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10072d">
-<meta name="description" content="LUCKY SPIN V10 — free virtual coin slot game">
+<meta name="description" content="LUCKY SPIN V13 — Royal virtual coin casino">
 <link rel="manifest" href="manifest.webmanifest">
-<title>LUCKY SPIN V10 — Temple of Fortune</title>
+<title>LUCKY SPIN V13 — Royal Casino</title>
 <style>
 :root{--gold:#ffd65a;--cyan:#58edff;--purple:#6b24d5}
 *{box-sizing:border-box}
@@ -219,67 +219,383 @@ body[data-theme="rainbow"] .brand h1{color:#ffb6f2;text-shadow:0 3px #9b2ab5,0 6
 .profile-panel.show,.wheel-panel.show{display:block;animation:pop .35s ease-out}
 .profile-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.profile-head small,.stats-grid small{display:block;color:#b9efff;font-size:9px;font-weight:900;letter-spacing:1px}.profile-head strong{display:block;color:#ffe777;font-size:22px}.xp-wrap{flex:1;max-width:55%;text-align:right}.xp-track{height:9px;background:#08051c;border:1px solid #8b69c9;border-radius:10px;overflow:hidden;margin-bottom:5px}.xp-track i{display:block;width:0;height:100%;background:linear-gradient(90deg,#48eaff,#ffe45c);transition:width .35s}
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:13px 0}.stats-grid>div{padding:9px;border-radius:10px;background:#ffffff0c;border:1px solid #a879ff55}.stats-grid b{display:block;color:#fff17b;font-size:13px;overflow-wrap:anywhere}.profile-panel h3{font-size:11px;color:#ffe47b;letter-spacing:1px}.achievement-list{display:flex;flex-wrap:wrap;gap:6px}.achievement{font-size:10px;padding:6px 8px;border-radius:9px;background:#145b4a;border:1px solid #7affc2;color:#eafff3}.achievement.locked{background:#21163d;border-color:#68518e;color:#9d91b7}
-.wheel-panel{text-align:center;position:relative}.wheel-panel>strong{display:block;color:#ffe777;font-size:16px}.wheel-pointer{color:#fff3a0;font-size:22px;line-height:18px;position:relative;z-index:2}.wheel{width:min(240px,65vw);height:min(240px,65vw);margin:0 auto 10px;border:7px ridge #ffdc63;border-radius:50%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);align-items:center;justify-items:center;background:conic-gradient(#b83255 0 45deg,#5630b4 45deg 90deg,#087c92 90deg 135deg,#4b8a37 135deg 180deg,#b87918 180deg 225deg,#8a286c 225deg 270deg,#244c9b 270deg 315deg,#9b3d1e 315deg);box-shadow:0 0 22px #ffd34c66,inset 0 0 0 4px #fff5;transition:transform 3s cubic-bezier(.12,.75,.12,1)}.wheel span{font-size:11px;font-weight:1000;text-shadow:0 2px 4px #000;padding:5px}.wheel-panel p{font-size:11px;color:#bdfaff}.wheel-panel .btn{max-width:240px;width:100%}
+.profile-mini{justify-self:start;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:7px;min-width:0;width:min(100%,205px);padding:6px 9px;border:1px solid #c18aff;border-radius:13px;background:linear-gradient(145deg,#54218c,#1b0b49);color:#fff;box-shadow:0 0 12px #9c54ff55;text-align:left}.profile-mini .avatar{font-size:18px}.profile-mini b{display:block;color:#ffe777;font-size:10px;white-space:nowrap}.profile-mini small{display:block;color:#bdfaff;font-size:8px;font-weight:900}.mini-xp{height:5px;margin-top:4px;border-radius:8px;background:#09051c;overflow:hidden}.mini-xp i{display:block;width:0;height:100%;background:linear-gradient(90deg,#52edff,#ffe35c);transition:width .35s}
+.wheel-panel{text-align:center;position:relative;overflow:hidden}.wheel-panel>strong{display:block;color:#ffe777;font-size:17px;letter-spacing:1px}.wheel-subtitle{margin:4px 0 8px;color:#bdfaff;font-size:10px}.wheel-pointer{color:#fff3a0;font-size:26px;line-height:20px;position:relative;z-index:3;text-shadow:0 2px 8px #ffcf39}.wheel-shell{position:relative;width:min(340px,82vw);aspect-ratio:1;margin:0 auto 12px;padding:8px;border-radius:50%;background:linear-gradient(135deg,#fff4a6,#c88b22 24%,#fff0a0 45%,#8b4b14 70%,#ffe98b);box-shadow:0 0 0 2px #fff6,0 0 28px #ffd34c88,0 12px 24px #0009}.wheel{display:block;width:100%;height:100%;border-radius:50%;overflow:visible;filter:drop-shadow(0 3px 5px #0009);transform:rotate(0deg);transform-origin:50% 50%;transition:transform 5s cubic-bezier(.10,.72,.08,1)}.wheel-center{position:absolute;left:50%;top:50%;width:19%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;border:4px ridge #fff0a2;background:radial-gradient(circle at 35% 25%,#fff7bd,#d99424 58%,#642c13);box-shadow:0 0 0 3px #5b267f,0 0 18px #ffdc64;color:#4b1b37;font-size:clamp(9px,2vw,13px);font-weight:1000;text-shadow:0 1px #fff8;z-index:2}.wheel-panel p{font-size:11px;color:#bdfaff;min-height:18px}.wheel-panel .btn{max-width:260px;width:100%}
+@media(max-width:430px){.profile-mini{width:100%;padding:5px 6px}.profile-mini .avatar{font-size:15px}.profile-mini b{font-size:9px}.topbar{gap:5px}.balance{padding:6px 8px}.store{padding:8px 6px;font-size:10px}.wheel-shell{width:min(310px,84vw)}}
 @media(max-width:430px){.v10-tools{grid-template-columns:1fr 1fr}.feature-btn{font-size:10px;padding:10px 3px}}
+
+
+/* V11 FULL-WIDTH CASINO DASHBOARD */
+html,body{width:100%;min-height:100%;overflow-x:hidden}
+body{min-height:100vh}
+.app{width:100%;max-width:1720px;min-height:100vh;margin:0 auto;padding:12px clamp(12px,2.2vw,34px) 22px}
+.topbar{max-width:none;padding:4px 0 8px;grid-template-columns:1fr auto 1fr}
+.brand{padding:2px 0 12px}
+.brand .scarab{font-size:38px}
+.brand h1{font-size:clamp(32px,4vw,54px)}
+.dashboard-grid{display:grid;grid-template-columns:minmax(230px,.78fr) minmax(520px,1.8fr) minmax(260px,.9fr);gap:16px;align-items:start;width:100%}
+.sidebar{display:flex;flex-direction:column;gap:13px;min-width:0}
+.side-card{min-width:0;padding:12px;border:1px solid #a66cff;border-radius:18px;background:linear-gradient(145deg,#29105bdb,#10082feF);box-shadow:0 8px 24px #0005,inset 0 0 18px #9d61ff12}
+.side-heading{margin:0 0 10px;color:#ffe47b;font-size:12px;font-weight:1000;letter-spacing:1px;text-align:center}
+.center-stage{min-width:0;max-width:100%;width:100%}
+.game-tabs{grid-template-columns:1fr;gap:7px;margin:0}
+.game-tab{padding:12px 8px;font-size:12px;text-align:left}
+.rewards{grid-template-columns:1fr;gap:9px;margin:0}
+.reward{padding:12px 8px}
+.reward strong{font-size:clamp(19px,1.5vw,25px)}
+.v10-tools{grid-template-columns:1fr 1fr;margin:10px 0 0}
+.feature-btn{font-size:10px;padding:11px 5px}
+.jackpots{grid-template-columns:1fr 1fr;gap:8px;margin:0}
+.jackpot{min-width:0;padding:11px 5px;border-radius:9px}
+.jackpot b{font-size:11px}
+.jackpot strong{font-size:clamp(12px,1vw,16px);white-space:normal;overflow-wrap:anywhere}
+.temple{width:100%;padding:12px}
+.reel-frame{width:100%}
+.reel{height:clamp(300px,32vw,440px)}
+.symbol{height:clamp(58px,6.1vw,82px);flex-basis:clamp(58px,6.1vw,82px)}
+.reels{gap:5px}
+.controls{margin:10px 0}
+.actionbar{margin-top:8px}
+.message{min-height:40px}
+.bonus-panel{margin:8px 0}
+.profile-panel{margin:0}
+.info{grid-template-columns:1fr;margin-top:10px}
+.infobox{padding:12px}
+.wheel-panel{margin:10px 0 0;padding:12px}
+.wheel-shell{width:min(100%,250px);margin:8px auto}
+.wheel{width:100%;height:auto}
+.note{max-width:1000px;margin:14px auto 0;padding:8px}
+.profile-mini{max-width:260px}
+@media(min-width:1500px){
+ .dashboard-grid{grid-template-columns:minmax(270px,.82fr) minmax(650px,1.9fr) minmax(300px,.92fr);gap:20px}
+ .side-card{padding:15px}
+ .temple{padding:15px}
+ .reel{height:clamp(360px,29vw,470px)}
+ .symbol{height:clamp(68px,5.8vw,88px);flex-basis:clamp(68px,5.8vw,88px)}
+}
+@media(max-width:1180px){
+ .dashboard-grid{grid-template-columns:minmax(210px,.75fr) minmax(0,1.6fr);gap:13px}
+ .sidebar-right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.3fr;align-items:start}
+ .sidebar-right .side-card{height:100%}
+ .sidebar-right .info{grid-template-columns:1fr 1fr}
+ .center-stage{grid-column:2;grid-row:1}
+ .sidebar-left{grid-column:1;grid-row:1}
+}
+@media(max-width:780px){
+ .app{padding:8px 8px 18px}
+ .topbar{grid-template-columns:1fr auto 1fr;gap:5px}
+ .profile-mini{padding:6px 7px;max-width:145px}
+ .balance{padding:6px 9px}
+ .brand .scarab{font-size:30px}
+ .brand h1{font-size:clamp(29px,8vw,42px)}
+ .dashboard-grid{display:flex;flex-direction:column;gap:12px}
+ .center-stage{order:0;width:100%}
+ .sidebar-left{order:1;width:100%}
+ .sidebar-right{order:2;width:100%;display:flex}
+ .sidebar-left .game-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .sidebar-left .rewards{grid-template-columns:1fr 1fr}
+ .sidebar-left .side-card{width:100%}
+ .sidebar-right .side-card{width:100%}
+ .sidebar-right .info{grid-template-columns:1fr 1fr}
+ .reel{height:clamp(245px,54vw,340px)}
+ .symbol{height:clamp(48px,10vw,68px);flex-basis:clamp(48px,10vw,68px)}
+ .temple{padding:8px}
+ .reel-frame{padding:6px}
+ .game-tab{text-align:center}
+}
+@media(max-width:440px){
+ .profile-mini .avatar{display:none}
+ .profile-mini{max-width:112px}
+ .profile-mini b{font-size:9px}
+ .balance strong{font-size:14px}
+ .store{font-size:10px;padding:8px 6px}
+ .sidebar-left .rewards,.sidebar-right .info{grid-template-columns:1fr}
+ .actionbar{gap:5px}
+ .btn{padding:11px 3px}
+ .reel{height:250px}
+ .symbol{height:48px;flex-basis:48px}
+}
+
+
+/* V12: compact one-screen desktop layout + level-based bets + autoplay */
+:root{--v12-gap:clamp(6px,.65vw,11px)}
+.v12-controls{display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;margin:5px 0 3px}
+.v12-controls label{display:flex;align-items:center;gap:5px;font-size:10px;color:#ffe7a6;font-weight:1000}
+.v12-controls select{background:#1b0b47;color:#fff;border:1px solid #ffd75b;border-radius:9px;padding:7px 9px;font-weight:900;font-size:11px;max-width:150px}
+.bet-cap{font-size:9px;color:#8ff5ff;font-weight:900;white-space:nowrap}
+.auto-btn{padding:8px 11px;font-size:10px;border-radius:10px;box-shadow:0 3px 0 #19052f}
+.stop-auto{background:linear-gradient(135deg,#9d2449,#54113e);border-color:#ff9ab5}
+.auto-btn:disabled{opacity:.4;filter:grayscale(1)}
+.autoplay-status{min-height:15px;text-align:center;color:#9af8ff;font-size:9px;font-weight:900;margin:2px 0 3px}
+.auto-active{color:#ffe777!important;animation:pulse .8s ease-in-out infinite alternate}
+@media(min-width:1181px) and (min-height:700px){
+ html,body{height:100%;overflow:hidden}
+ .app{height:100dvh;min-height:0;overflow:hidden;padding:6px clamp(12px,2vw,30px) 8px;display:flex;flex-direction:column;gap:0}
+ .topbar{flex:0 0 42px;padding:1px 0 3px}
+ .brand{flex:0 0 auto;padding:0 0 6px}
+ .brand .scarab{font-size:clamp(22px,3vh,32px);line-height:1}
+ .brand h1{font-size:clamp(27px,4vh,42px);line-height:1}
+ .brand p{margin:3px 0 0;font-size:9px;letter-spacing:3px}
+ .dashboard-grid{flex:1;min-height:0;grid-template-columns:minmax(220px,.78fr) minmax(500px,1.85fr) minmax(250px,.9fr);gap:var(--v12-gap);align-items:stretch}
+ .sidebar{min-height:0;gap:var(--v12-gap);overflow:hidden}
+ .side-card{padding:clamp(7px,.7vw,11px);border-radius:14px}
+ .side-heading{font-size:10px;margin-bottom:6px}
+ .game-tab{padding:clamp(7px,.9vh,10px) 7px;font-size:10px}
+ .rewards{gap:6px}
+ .reward{padding:7px 5px;border-radius:12px}
+ .reward small{font-size:9px}.reward strong{font-size:clamp(16px,2vh,21px)}
+ .reward button{margin-top:4px;padding:5px 10px;font-size:9px}
+ .timer{font-size:9px;margin-top:3px}
+ .v10-tools{margin-top:6px;gap:5px}.feature-btn{padding:8px 3px;font-size:9px}
+ .center-stage{display:flex;flex-direction:column;justify-content:center;min-height:0}
+ .temple{padding:clamp(6px,.7vh,10px);border-radius:18px}
+ .runes{font-size:13px;padding-bottom:4px}
+ .reel-frame{padding:5px;border-radius:14px}
+ .reel{height:min(36vh,330px)}
+ .symbol{height:clamp(43px,6.1vh,63px);flex-basis:clamp(43px,6.1vh,63px)}
+ .reels{gap:3px}
+ .temple-caption{font-size:8px;padding-top:6px}
+ .controls{margin:4px 0}
+ .actionbar{margin-top:4px;gap:6px}
+ .btn{padding:9px 5px;font-size:10px;border-radius:12px}
+ .btn.spin{font-size:clamp(17px,2.3vh,23px);padding:9px 5px}
+ .message{min-height:20px;padding:5px 2px 2px;font-size:11px}
+ .bonus-panel{margin:4px 0;padding:7px}
+ .bonus-panel strong{font-size:15px}.bonus-panel p{font-size:10px;margin:3px}
+ .jackpots{gap:5px}.jackpot{padding:7px 3px}.jackpot b{font-size:9px}.jackpot strong{font-size:clamp(10px,.9vw,13px)}
+ .info{gap:6px;margin-top:4px}.infobox{padding:7px;border-radius:10px}.infobox h3{font-size:9px;margin-bottom:4px}.infobox p{font-size:8px;margin:3px 0}.chip{font-size:8px;padding:3px 5px}
+ .profile-panel{margin:4px 0;padding:8px}.profile-head strong{font-size:17px}.stats-grid{gap:4px;margin:6px 0}.stats-grid>div{padding:5px}.stats-grid b{font-size:10px}
+ .note{flex:0 0 auto;margin:4px auto 0;padding:3px 4px;font-size:8px;line-height:1.2}
+ .sidebar-left>.side-card:first-child{flex:0 0 auto}.sidebar-left>.side-card:nth-child(2){flex:1;min-height:0;overflow:auto}
+ .sidebar-right>.side-card{flex:0 0 auto}.sidebar-right>.side-card:nth-child(2){flex:1;min-height:0;overflow:auto}
+}
+@media(min-width:1500px) and (min-height:700px){.dashboard-grid{grid-template-columns:minmax(230px,.8fr) minmax(560px,1.9fr) minmax(260px,.92fr)}}
+@media(max-height:760px) and (min-width:1181px){
+ .app{padding-top:3px;padding-bottom:4px}.topbar{flex-basis:34px}.brand{padding-bottom:3px}.brand .scarab{font-size:20px}.brand h1{font-size:27px}.brand p{font-size:8px}
+ .reel{height:29vh}.symbol{height:clamp(38px,5.1vh,48px);flex-basis:clamp(38px,5.1vh,48px)}
+ .side-card{padding:6px}.reward{padding:5px}.jackpot{padding:5px}.note{font-size:7px}
+}
+@media(max-width:1180px){.v12-controls{gap:5px}.v12-controls select{padding:6px 7px}}
+@media(max-width:780px){.v12-controls{justify-content:center}.autoplay-status{font-size:8px}.auto-btn{padding:8px 9px}}
+
+
+/* V13 ROYAL CASINO VISUAL PASS */
+:root{--royal-gold:#f8d878;--royal-gold-hi:#fff1b0;--royal-ink:#080616;--royal-plum:#170a35;--royal-violet:#6426a0;--royal-teal:#087b7b}
+html,body{background:#090617}
+body{
+ background:
+  radial-gradient(ellipse at 50% 18%,rgba(171,74,28,.40),transparent 38%),
+  radial-gradient(ellipse at 12% 45%,rgba(48,20,101,.72),transparent 42%),
+  radial-gradient(ellipse at 88% 48%,rgba(22,77,91,.42),transparent 40%),
+  linear-gradient(135deg,#090615 0%,#241039 48%,#080617 100%);
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.22;
+ background-image:radial-gradient(circle at 12% 20%,#ffe7a8 0 1px,transparent 2px),radial-gradient(circle at 82% 30%,#ffcf67 0 1px,transparent 2px),radial-gradient(circle at 28% 78%,#b9a0ff 0 1px,transparent 2px),radial-gradient(circle at 91% 82%,#fff 0 1px,transparent 2px);
+ background-size:170px 190px,230px 210px,190px 230px,260px 240px;
+}
+.app{position:relative;z-index:1;width:100%;max-width:1760px;margin:0 auto;min-height:100vh;min-height:100dvh;padding:12px clamp(12px,2vw,32px) 18px}
+.topbar{padding:4px 0 8px}
+.balance{background:linear-gradient(180deg,#39205f,#100923);border:2px solid var(--royal-gold);box-shadow:0 0 0 2px #6d3b9a,0 0 24px #ffcf5c55,inset 0 0 14px #fff2}
+.balance strong{color:#fff0a1;text-shadow:0 0 12px #ffd66a66}
+.profile-mini,.store{border:1px solid var(--royal-gold);background:linear-gradient(145deg,#57318a,#160a35);box-shadow:0 4px 12px #0007,inset 0 1px #fff5}
+.store{background:linear-gradient(135deg,#ffe99a,#d98a2a 55%,#9c431b);color:#321343}
+.brand{padding:0 0 12px}
+.brand .scarab{font-size:clamp(28px,4vh,42px);filter:drop-shadow(0 0 12px #ffcf63)}
+.brand h1{
+ font-family:Georgia,'Times New Roman',serif;font-weight:900;letter-spacing:3px;
+ color:#ffe7a0;text-shadow:0 2px #9b551b,0 5px #4a1c52,0 0 18px #ffc65a,0 0 34px #ff9f3c;
+}
+.brand p{color:#ffe8bd;letter-spacing:4px}
+.dashboard-grid{max-width:1680px;margin:0 auto;grid-template-columns:minmax(230px,.76fr) minmax(520px,1.9fr) minmax(250px,.82fr);gap:14px;align-items:stretch}
+.sidebar{gap:12px}
+.side-card{
+ border:1px solid #d4a85d;border-radius:17px;
+ background:linear-gradient(145deg,rgba(69,34,94,.96),rgba(13,8,34,.97) 72%);
+ box-shadow:0 9px 24px #0008,0 0 0 1px #7c4c9a66,inset 0 1px 0 #fff5,inset 0 0 24px #dca94a0c;
+}
+.side-heading{color:#ffe8a3;text-shadow:0 0 9px #e7b85b66}
+.center-stage{gap:8px}
+.temple{
+ position:relative;isolation:isolate;
+ border:3px solid #d8a947;border-radius:24px;padding:10px;
+ background:
+  radial-gradient(ellipse at 50% 0%,#187b7a 0%,#0a4c57 34%,#221039 72%,#130823 100%);
+ box-shadow:0 0 0 2px #6f399d,0 0 0 5px #e7b95755,0 14px 32px #000b,inset 0 0 32px #ffe28b25;
+}
+.temple:before{content:"";position:absolute;z-index:-1;inset:5px;border:1px solid #ffe7a0aa;border-radius:17px;pointer-events:none}
+.runes{color:#ffe09a;text-shadow:0 0 12px #ffca57}
+.reel-frame{
+ border:5px ridge #f4d27b;border-radius:21px;padding:9px;
+ background:linear-gradient(145deg,#08051a,#1b0c39 50%,#070514);
+ box-shadow:inset 0 0 30px #000,0 0 0 2px #9e5bd1,0 0 28px #f8c75b66,0 7px 16px #0009;
+}
+.reels{gap:4px;padding:4px;border-radius:13px;background:linear-gradient(180deg,#050312,#12082b 50%,#050312);box-shadow:inset 0 0 20px #000}
+.reel{border-radius:9px;background:linear-gradient(90deg,#0008,#28154c55 24%,#fff1 50%,#28154c55 76%,#0008);border-right:1px solid #e8c76c35}
+.symbol svg{filter:drop-shadow(0 5px 4px #000d) drop-shadow(0 0 7px #ffdf8c55)}
+.reel.spinning .symbol svg{filter:blur(1.8px) drop-shadow(0 0 8px #fff9) saturate(1.3)}
+.symbol.hit svg{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px #ffe45b) drop-shadow(0 0 28px #ff9d31)}
+.temple-caption{color:#ffe7a2;letter-spacing:1.4px}
+.jackpot{border:2px solid #e6bd65;border-radius:10px;box-shadow:inset 0 0 13px #ffe29b44,0 4px 0 #170b2a,0 0 12px #ffcf5c22}
+.reward{border:1px solid #e5bd68;background:linear-gradient(145deg,#572c86,#170a3b);box-shadow:inset 0 1px #fff4,0 5px 0 #170923}
+.reward:nth-child(2){border-color:#68dce0;background:linear-gradient(145deg,#075c72,#151039)}
+.reward strong{color:#fff0a0;text-shadow:0 0 12px #ffcb5b55}
+.btn{border:1px solid #f5d58a;background:linear-gradient(145deg,#6e36a6,#24104d);box-shadow:0 4px 0 #10051e,0 8px 14px #0008,inset 0 1px #fff5}
+.btn.spin{border:3px solid #fff0ae;background:linear-gradient(110deg,#fff0a1,#e7a43d 45%,#d94378);color:#3a164c;box-shadow:0 5px 0 #6b254c,0 0 24px #ffbd4d77,inset 0 2px #fff}
+.btn:active{transform:translateY(2px)}
+.controls select{border:1px solid #e8c66e;background:linear-gradient(#27134a,#100822);box-shadow:inset 0 1px #fff3}
+.message{color:#a9f8ff;text-shadow:0 0 12px #47dfff77}
+.autoplay-status{color:#ffe8a1}
+.wheel-panel,.profile-panel{border-color:#d6ad65;background:linear-gradient(145deg,#3e1d68,#12092d);box-shadow:inset 0 1px #fff4,0 8px 22px #0006}
+.infobox{border-color:#9c70c7;background:linear-gradient(145deg,#32175d,#110929)}
+/* Reel spin: richer blur, glow and sequential mechanical landing */
+.reel.spinning{box-shadow:inset 0 0 22px #6bdfff24}
+.reel.spinning:before{background:repeating-linear-gradient(180deg,transparent 0 18px,#b8faff18 20px,#fff8 21px,transparent 25px);filter:blur(.3px)}
+.symbol.stopflash{animation:royalLand .58s cubic-bezier(.15,1.2,.25,1)}
+@keyframes royalLand{0%{transform:translateY(-18px) scale(.78);filter:brightness(2.1) blur(2px)}55%{transform:translateY(5px) scale(1.12);filter:brightness(1.65)}78%{transform:translateY(-2px) scale(.97)}100%{transform:translateY(0) scale(1);filter:brightness(1)}}
+.symbol.hit{animation:royalWin .72s ease-in-out 3}
+@keyframes royalWin{0%,100%{transform:scale(1)}50%{transform:scale(1.16);filter:brightness(1.6)}}
+.confetti{filter:drop-shadow(0 0 4px #fff7)}
+/* Desktop casino cabinet fills the viewport without clipping controls */
+@media(min-width:1181px) and (min-height:700px){
+ .app{height:100vh;height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden;padding-top:8px;padding-bottom:8px;gap:4px}
+ .topbar{flex:0 0 42px;padding:0}
+ .brand{flex:0 0 68px;padding:0 0 5px}
+ .brand .scarab{font-size:28px}.brand h1{font-size:clamp(28px,4vh,42px)}.brand p{font-size:9px}
+ .dashboard-grid{flex:1;min-height:0;grid-template-columns:minmax(225px,.76fr) minmax(520px,1.9fr) minmax(245px,.82fr);gap:12px}
+ .sidebar{min-height:0;overflow:auto;scrollbar-width:thin;scrollbar-color:#9363b4 transparent}
+ .side-card{padding:9px;border-radius:14px}
+ .side-heading{font-size:10px;margin-bottom:7px}
+ .center-stage{min-height:0;display:flex;flex-direction:column;justify-content:center;gap:5px}
+ .temple{flex:1;min-height:0;padding:7px 9px;display:flex;flex-direction:column;justify-content:center}
+ .runes{font-size:12px;padding-bottom:4px}
+ .reel-frame{padding:7px;flex:1;min-height:0;display:flex;align-items:stretch}
+ .reels{width:100%;min-height:0}
+ .reel{height:100%;min-height:0}
+ .symbol{height:clamp(42px,9.5vh,76px);flex-basis:clamp(42px,9.5vh,76px)}
+ .temple-caption{font-size:8px;padding-top:5px}
+ .v12-controls{margin:2px 0;gap:7px}
+ .actionbar{margin-top:2px;gap:7px}
+ .btn{padding:9px 6px;font-size:10px;border-radius:12px}
+ .btn.spin{font-size:clamp(18px,2.8vh,25px);padding:8px}
+ .message{min-height:20px;padding:3px;font-size:11px}
+ .autoplay-status{font-size:9px;padding:2px}
+ .bonus-panel{margin:2px 0;padding:6px}
+ .note{flex:0 0 auto;margin:0 auto;padding:2px;font-size:7px;line-height:1.1}
+ .reward{padding:7px 5px}.reward strong{font-size:17px}.reward small{font-size:9px}
+ .jackpots{gap:5px;margin:4px 0}.jackpot{padding:6px 2px}.jackpot b{font-size:8px}.jackpot strong{font-size:clamp(9px,.8vw,12px)}
+ .info{gap:5px;margin-top:4px}.infobox{padding:6px}.infobox h3{font-size:8px}.infobox p{font-size:7px}
+ .game-tab{padding:9px 4px;font-size:10px}
+ .rewards{gap:6px;margin:4px 0 7px}
+ .profile-panel{padding:7px;margin:3px 0}
+}
+@media(max-width:1180px){
+ .app{max-width:100%;padding:10px 12px 18px}
+ .dashboard-grid{grid-template-columns:minmax(190px,.72fr) minmax(0,1.6fr) minmax(200px,.78fr);gap:10px}
+}
+@media(max-width:900px){
+ .dashboard-grid{grid-template-columns:1fr 1.7fr}
+ .sidebar-right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+ .dashboard-grid{display:flex;flex-direction:column}
+ .center-stage{order:0;width:100%}.sidebar-left{order:1;width:100%}.sidebar-right{order:2;width:100%;display:flex}
+ .reel{height:clamp(190px,58vw,300px)}.symbol{height:clamp(36px,10vw,56px);flex-basis:clamp(36px,10vw,56px)}
+ .brand h1{font-size:clamp(29px,9vw,42px)}
+}
 
 </style>
 </head>
 <body>
 <main class="app">
-<div class="topbar"><button class="iconbtn" aria-label="Home">⌂</button><div class="balance"><small>🪙 COIN BALANCE</small><strong id="balance">0</strong></div><button class="store" id="sound">🔊 SOUND</button></div>
-<header class="brand"><div class="scarab" id="brandIcon">𓆣 ✨ 𓆣</div><h1 id="brandTitle">LUCKY SPIN</h1><p id="brandSubtitle">TEMPLE OF FORTUNE</p></header>
-<nav class="game-tabs" aria-label="Choose a slot game">
-<button class="game-tab active" data-game="temple">𓆣 LUCKY SPIN</button>
-<button class="game-tab" data-game="food">🍔 FOOD FEAST</button>
-<button class="game-tab" data-game="jewels">💎 JEWELS</button>
-<button class="game-tab" data-game="rainbow">🌈 RAINBOW BLITZ</button>
-</nav>
-<section class="rewards">
-<div class="reward"><small>🎁 DAILY GIFT</small><strong>1 TRILLION</strong><button id="daily">CLAIM GIFT</button><div class="timer" id="dailyStatus">Available now</div></div>
-<div class="reward"><small>⏰ 30-MIN BONUS</small><strong>200 MILLION</strong><button id="bonus">COLLECT</button><div class="timer" id="bonusTimer">READY TO COLLECT</div></div>
-</section>
-<section class="jackpots">
-<div class="jackpot"><b>👑 GRAND</b><strong id="grandJackpot">1,000,000,000,000</strong></div>
-<div class="jackpot"><b>💎 MAJOR</b><strong id="majorJackpot">100,000,000,000</strong></div>
-<div class="jackpot"><b>🔱 MINOR</b><strong id="minorJackpot">10,000,000,000</strong></div>
-<div class="jackpot"><b>✨ MINI</b><strong id="miniJackpot">1,000,000,000</strong></div>
-</section>
-<section class="temple">
-<div class="runes">𓂀 𓆣 𓋹 𓆣 𓂀</div>
-<div class="reel-frame"><div class="reels" id="reels"></div></div>
-<div class="temple-caption">𓋹 MATCH 3 OR MORE • 5 REELS × 5 ROWS • VIRTUAL COINS 𓋹</div>
-</section>
-<div class="controls">
-<label>BET <select id="bet"><option value="1000000">1M</option><option value="5000000">5M</option><option value="10000000" selected>10M</option><option value="25000000">25M</option><option value="50000000">50M</option><option value="100000000">100M</option></select></label>
+<div class="topbar">
+ <button class="profile-mini" id="profileMini" aria-label="Open player profile"><span class="avatar">👤</span><span><b id="miniLevel">LEVEL 1</b><small id="miniXP">0 / 500 XP</small><span class="mini-xp"><i id="miniXPFill"></i></span></span></button>
+ <div class="balance"><small>🪙 COIN BALANCE</small><strong id="balance">0</strong></div>
+ <button class="store" id="sound">🔊 SOUND</button>
 </div>
-<div class="actionbar"><button class="btn" id="giftInfo">🎁 GIFTS</button><button class="btn spin" id="spin">⚡ SPIN ⚡</button><button class="btn" id="reset">↻ RESET</button></div>
-<div class="message" id="message" aria-live="polite">Claim your daily gift or collect your welcome bonus!</div>
-<section class="bonus-panel" id="bonusPanel"><strong id="bonusTitle">🎉 BONUS ROUND!</strong><p id="bonusText">Free spins are ready.</p><button class="btn" id="startBonus">START FREE SPINS</button></section>
-<section class="v10-tools">
- <button class="btn feature-btn" id="wheelBtn">🎡 BONUS WHEEL</button>
- <button class="btn feature-btn" id="profileBtn">👤 PLAYER PROFILE</button>
-</section>
-<section class="profile-panel" id="profilePanel" aria-live="polite">
- <div class="profile-head"><div><small>PLAYER LEVEL</small><strong id="playerLevel">LEVEL 1</strong></div><div class="xp-wrap"><div class="xp-track"><i id="xpFill"></i></div><small id="xpText">0 / 500 XP</small></div></div>
- <div class="stats-grid">
-  <div><small>TOTAL SPINS</small><b id="statSpins">0</b></div><div><small>TOTAL WAGERED</small><b id="statWagered">0</b></div>
-  <div><small>TOTAL WON</small><b id="statWon">0</b></div><div><small>BEST WIN</small><b id="statBest">0</b></div>
- </div>
- <h3>🏅 ACHIEVEMENTS</h3><div class="achievement-list" id="achievementList"><span class="achievement locked">First Spin · locked</span></div>
-</section>
-<section class="wheel-panel" id="wheelPanel" aria-label="Bonus prize wheel">
- <strong>🎡 DAILY BONUS WHEEL</strong><div class="wheel-pointer">▼</div><div class="wheel" id="bonusWheel"><span>10M</span><span>25M</span><span>50M</span><span>100M</span><span>75M</span><span>200M</span><span>500M</span><span>1B</span></div>
- <p id="wheelMessage">Spin once per day for a surprise virtual reward.</p><button class="btn spin" id="spinWheel">SPIN THE WHEEL</button>
-</section>
-<section class="info">
-<div class="infobox"><h3>🧾 RECENT SPINS</h3><div class="history" id="history"><span class="chip">No spins yet</span></div></div>
-<div class="infobox"><h3>🏆 PAYOUT & BONUS GUIDE</h3><p>3 in a row: <b>2×–25×</b></p><p>4 in a row: <b>4×–50×</b></p><p>5 in a row: <b>10×–125×</b></p><p>🎁 3+ bonus icons: 5 free spins</p><p>Free-spin multipliers: <b>8×, 10×, 15×, 20×, 25×, 50×, 100×, 250×, 500×</b></p><p>💎 Random virtual jackpot chance</p></div>
-</section>
+<header class="brand"><div class="scarab" id="brandIcon">𓆣 ✨ 𓆣</div><h1 id="brandTitle">LUCKY SPIN</h1><p id="brandSubtitle">TEMPLE OF FORTUNE</p></header>
+
+<div class="dashboard-grid">
+ <aside class="sidebar sidebar-left" aria-label="Games and bonuses">
+  <section class="side-card">
+   <h2 class="side-heading">🎮 GAME LOBBY</h2>
+   <nav class="game-tabs" aria-label="Choose a slot game">
+    <button class="game-tab active" data-game="temple">𓆣 LUCKY SPIN</button>
+    <button class="game-tab" data-game="food">🍔 FOOD FEAST</button>
+    <button class="game-tab" data-game="jewels">💎 JEWELS</button>
+    <button class="game-tab" data-game="rainbow">🌈 RAINBOW BLITZ</button>
+   </nav>
+  </section>
+  <section class="side-card">
+   <h2 class="side-heading">🎁 BONUS & REWARDS</h2>
+   <div class="rewards">
+    <div class="reward"><small>🎁 DAILY GIFT</small><strong>1 TRILLION</strong><button id="daily">CLAIM GIFT</button><div class="timer" id="dailyStatus">Available now</div></div>
+    <div class="reward"><small>⏰ 30-MIN BONUS</small><strong>200 MILLION</strong><button id="bonus">COLLECT</button><div class="timer" id="bonusTimer">READY TO COLLECT</div></div>
+   </div>
+   <div class="v10-tools">
+    <button class="btn feature-btn" id="wheelBtn">🎡 BONUS WHEEL</button>
+    <button class="btn feature-btn" id="profileBtn">👤 PLAYER PROFILE</button>
+   </div>
+   <section class="wheel-panel" id="wheelPanel" aria-label="Bonus prize wheel">
+    <strong>🎡 DAILY BONUS WHEEL</strong><p class="wheel-subtitle">One free daily spin · Win virtual coins</p><div class="wheel-pointer">▼</div>
+    <div class="wheel-shell"><svg class="wheel" id="bonusWheel" viewBox="0 0 320 320" role="img" aria-label="Eight-segment prize wheel"><g id="wheelSegments"></g><circle cx="160" cy="160" r="153" fill="none" stroke="#fff3b0" stroke-width="2"/><circle cx="160" cy="160" r="116" fill="none" stroke="#fff9" stroke-width="1.5"/></svg><div class="wheel-center">LUCKY<br>SPIN</div></div>
+    <p id="wheelMessage">Spin once per day for a surprise virtual reward.</p><button class="btn spin" id="spinWheel">SPIN THE WHEEL</button>
+   </section>
+  </section>
+ </aside>
+
+ <section class="center-stage" aria-label="Slot machine">
+  <section class="temple">
+   <div class="runes">𓂀 𓆣 𓋹 𓆣 𓂀</div>
+   <div class="reel-frame"><div class="reels" id="reels"></div></div>
+   <div class="temple-caption">𓋹 MATCH 3 OR MORE • 5 REELS × 5 ROWS • VIRTUAL COINS 𓋹</div>
+  </section>
+  <div class="controls v12-controls">
+   <label>BET <select id="bet" aria-label="Bet amount"></select></label>
+   <span class="bet-cap" id="betCap">LEVEL 1 MAX: 100M</span>
+   <label class="auto-label">AUTO <select id="autoCount" aria-label="Auto play spin count"><option value="20">20 spins</option><option value="30">30 spins</option><option value="100">100 spins</option><option value="infinite">∞ Unlimited</option></select></label>
+   <button class="btn auto-btn" id="autoPlay">▶ AUTO PLAY</button>
+   <button class="btn auto-btn stop-auto" id="stopAuto" disabled>■ STOP</button>
+  </div>
+  <div class="actionbar"><button class="btn" id="giftInfo">🎁 GIFTS</button><button class="btn spin" id="spin">⚡ SPIN ⚡</button><button class="btn" id="reset">↻ RESET</button></div>
+  <div class="autoplay-status" id="autoStatus" aria-live="polite">AUTO PLAY READY · Choose 20, 30, 100 or unlimited spins</div>
+  <div class="message" id="message" aria-live="polite">Claim your daily gift or collect your welcome bonus!</div>
+  <section class="bonus-panel" id="bonusPanel"><strong id="bonusTitle">🎉 BONUS ROUND!</strong><p id="bonusText">Free spins are ready.</p><button class="btn" id="startBonus">START FREE SPINS</button></section>
+ </section>
+
+ <aside class="sidebar sidebar-right" aria-label="Jackpots and player statistics">
+  <section class="side-card">
+   <h2 class="side-heading">🏆 PROGRESSIVE JACKPOTS</h2>
+   <section class="jackpots">
+    <div class="jackpot"><b>👑 GRAND</b><strong id="grandJackpot">1,000,000,000,000</strong></div>
+    <div class="jackpot"><b>💎 MAJOR</b><strong id="majorJackpot">100,000,000,000</strong></div>
+    <div class="jackpot"><b>🔱 MINOR</b><strong id="minorJackpot">10,000,000,000</strong></div>
+    <div class="jackpot"><b>✨ MINI</b><strong id="miniJackpot">1,000,000,000</strong></div>
+   </section>
+  </section>
+  <section class="side-card">
+   <h2 class="side-heading">👤 PLAYER CENTER</h2>
+   <section class="profile-panel" id="profilePanel" aria-live="polite">
+    <div class="profile-head"><div><small>PLAYER LEVEL</small><strong id="playerLevel">LEVEL 1</strong></div><div class="xp-wrap"><div class="xp-track"><i id="xpFill"></i></div><small id="xpText">0 / 500 XP</small></div></div>
+    <div class="stats-grid">
+     <div><small>TOTAL SPINS</small><b id="statSpins">0</b></div><div><small>TOTAL WAGERED</small><b id="statWagered">0</b></div>
+     <div><small>TOTAL WON</small><b id="statWon">0</b></div><div><small>BEST WIN</small><b id="statBest">0</b></div>
+    </div>
+    <h3>🏅 ACHIEVEMENTS</h3><div class="achievement-list" id="achievementList"><span class="achievement locked">First Spin · locked</span></div>
+   </section>
+   <section class="info">
+    <div class="infobox"><h3>🧾 RECENT SPINS</h3><div class="history" id="history"><span class="chip">No spins yet</span></div></div>
+    <div class="infobox"><h3>🏆 PAYOUT & BONUS GUIDE</h3><p>3 in a row: <b>2×–25×</b></p><p>4 in a row: <b>4×–50×</b></p><p>5 in a row: <b>10×–125×</b></p><p>🎁 3+ bonus icons: 5 free spins</p><p>Free-spin multipliers: <b>8×, 10×, 15×, 20×, 25×, 50×, 100×, 250×, 500×</b></p><p>💎 Random virtual jackpot chance</p></div>
+   </section>
+  </section>
+ </aside>
+</div>
 <p class="note">LUCKY SPIN is a free entertainment game. Coins and jackpots are fictional, have no cash value, and cannot be purchased, transferred or withdrawn. Rewards are stored locally in this browser.</p>
 </main>
 <script>
 const KEY='luckySpinV6',START={balance:0,dailyClaimedOn:'',nextBonusAt:0,bonusClaimedOnce:false,bestWin:0,history:[],totalSpins:0,totalWagered:0,totalWon:0,xp:0,achievements:[],wheelClaimedOn:'',jackpots:{grand:1000000000000,major:100000000000,minor:10000000000,mini:1000000000}};
 let data={...START,...read()},busy=false,freeSpins=0,bonusBet=0,bonusRemaining=0,bonusAuto=false;
+let autoPlayActive=false,autoPlayRemaining=0,autoPlayUnlimited=false,autoPlayTimer=null;
 const THEME_SYMBOLS={
  temple:[
   {e:'🍒',m:2},{e:'🍋',m:2},{e:'🍇',m:3},{e:'🔔',m:4},{e:'🪙',m:5},
@@ -355,29 +671,98 @@ function symbolSVG(e){
 function paintSymbol(el,e){el.innerHTML=symbolSVG(e);el.dataset.symbol=e;}
 
 function pick(){let r=Math.random();if(r<.012)return '❔';if(r<.047)return '🎁';let pool=symbols.filter(s=>!s.bonus&&s.e!=='🎁');return pool[Math.floor(Math.random()*pool.length)].e}
+const BET_STEPS=[1000000,5000000,10000000,25000000,50000000,100000000,250000000,500000000,1000000000,2500000000,5000000000,10000000000,25000000000,50000000000,100000000000,250000000000,500000000000,1000000000000];
+function playerLevel(){return Math.floor((data.xp||0)/500)+1}
+function maxBetForLevel(level=playerLevel()){
+ if(level>=100)return 1000000000000;
+ if(level>=75)return 500000000000;
+ if(level>=50)return 250000000000;
+ if(level>=40)return 100000000000;
+ if(level>=30)return 50000000000;
+ if(level>=25)return 25000000000;
+ if(level>=20)return 10000000000;
+ if(level>=15)return 5000000000;
+ if(level>=10)return 1000000000;
+ if(level>=7)return 500000000;
+ if(level>=5)return 250000000;
+ return 100000000;
+}
+function shortCoins(n){if(n>=1e12)return (n/1e12).toLocaleString('en-US',{maximumFractionDigits:2})+'T';if(n>=1e9)return (n/1e9).toLocaleString('en-US',{maximumFractionDigits:2})+'B';if(n>=1e6)return (n/1e6).toLocaleString('en-US',{maximumFractionDigits:2})+'M';return fmt(n)}
+function refreshBetOptions(){
+ const select=$('bet');if(!select)return;const cap=maxBetForLevel(),current=Number(select.value)||10000000;select.innerHTML='';
+ BET_STEPS.filter(v=>v<=cap).forEach(v=>{const opt=document.createElement('option');opt.value=String(v);opt.textContent=shortCoins(v);select.appendChild(opt)});
+ const chosen=BET_STEPS.filter(v=>v<=cap&&v<=Math.max(current,10000000)).pop()||1000000;select.value=String(chosen);
+ $('betCap').textContent=`LEVEL ${playerLevel()} MAX: ${shortCoins(cap)}`;
+}
+function stopAutoPlay(reason='Auto play stopped'){
+ autoPlayActive=false;if(autoPlayTimer){clearTimeout(autoPlayTimer);autoPlayTimer=null}
+ $('autoPlay').disabled=false;$('autoPlay').textContent='▶ AUTO PLAY';$('stopAuto').disabled=true;
+ $('autoStatus').classList.remove('auto-active');$('autoStatus').textContent=reason;
+}
+function queueAutoPlay(){
+ if(!autoPlayActive)return;
+ if(autoPlayRemaining===0&&!autoPlayUnlimited){stopAutoPlay('AUTO PLAY COMPLETE ✓');return;}
+ const bet=Number($('bet').value)||0;
+ if(data.balance<bet){stopAutoPlay('AUTO PLAY STOPPED · INSUFFICIENT COINS');return;}
+ $('autoStatus').textContent=autoPlayUnlimited?'AUTO PLAY ACTIVE · UNLIMITED':`AUTO PLAY ACTIVE · ${autoPlayRemaining} SPINS LEFT`;
+ autoPlayTimer=setTimeout(()=>{autoPlayTimer=null;if(!autoPlayActive||busy)return;spin(false)},650);
+}
+function startAutoPlay(){
+ if(busy||autoPlayActive)return;const bet=Number($('bet').value)||0;
+ if(data.balance<bet){$('autoStatus').textContent='NOT ENOUGH COINS FOR THE SELECTED BET';return;}
+ const choice=$('autoCount').value;autoPlayUnlimited=choice==='infinite';autoPlayRemaining=autoPlayUnlimited?Infinity:Number(choice);
+ autoPlayActive=true;$('autoPlay').disabled=true;$('autoPlay').textContent='▶ RUNNING';$('stopAuto').disabled=false;$('autoStatus').classList.add('auto-active');
+ queueAutoPlay();
+}
 function update(){
- $('balance').textContent=fmt(data.balance);
+ $('balance').textContent=fmt(data.balance);refreshBetOptions();
  $('daily').disabled=data.dailyClaimedOn===today();$('daily').textContent=$('daily').disabled?'CLAIMED ✓':'CLAIM GIFT';
  $('dailyStatus').textContent=$('daily').disabled?'Come back tomorrow':'Available now';
  let left=Math.max(0,(data.nextBonusAt||0)-Date.now());
  $('bonus').disabled=left>0;$('bonusTimer').textContent=left>0?`${String(Math.floor(left/60000)).padStart(2,'0')}:${String(Math.floor(left/1000)%60).padStart(2,'0')}`:'READY TO COLLECT';
 }
-function playTone(freq=520,duration=.11,type='sine',volume=.045){
- if(!soundOn)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;audioCtx=audioCtx||new C();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(freq,audioCtx.currentTime);g.gain.setValueAtTime(volume,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch(e){}
+function ensureAudio(){
+ try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;audioCtx=audioCtx||new C();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}catch(e){return null}
+}
+function playTone(freq=520,duration=.11,type='sine',volume=.045,delay=0){
+ if(!soundOn)return;try{const ctx=ensureAudio();if(!ctx)return;const t=ctx.currentTime+delay,o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(volume,t+.018);g.gain.exponentialRampToValueAtTime(.001,t+duration);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+duration+.03)}catch(e){}
+}
+let royalMusicTimer=null,royalMusicStep=0;
+function startRoyalAmbience(){
+ if(!soundOn||royalMusicTimer)return;
+ const notes=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
+ royalMusicTimer=setInterval(()=>{if(!soundOn)return;playTone(notes[royalMusicStep%notes.length],.34,'sine',.008);if(royalMusicStep%4===0)playTone(notes[(royalMusicStep+2)%notes.length]/2,.48,'triangle',.006);royalMusicStep++},535);
+}
+function stopRoyalAmbience(){if(royalMusicTimer){clearInterval(royalMusicTimer);royalMusicTimer=null}}
+function playSpinStart(){
+ if(!soundOn)return;const ctx=ensureAudio();if(!ctx)return;
+ try{const t=ctx.currentTime,o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(95,t);o.frequency.exponentialRampToValueAtTime(620,t+.42);o.frequency.exponentialRampToValueAtTime(180,t+1.5);f.type='lowpass';f.frequency.setValueAtTime(900,t);f.frequency.linearRampToValueAtTime(2600,t+.5);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.035,t+.12);g.gain.exponentialRampToValueAtTime(.001,t+1.55);o.connect(f);f.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+1.58)}catch(e){}
+}
+function playReelStop(col){
+ if(!soundOn)return;const base=440+col*72;playTone(base,.13,'triangle',.035);playTone(base*1.5,.09,'sine',.012,.035);
+}
+function playWinFanfare(){
+ if(!soundOn)return;[523.25,659.25,783.99,1046.5].forEach((n,i)=>playTone(n,.28,'triangle',.045,i*.105));
+}
+function playJackpotFanfare(){
+ if(!soundOn)return;[392,523.25,659.25,783.99,1046.5,1318.5].forEach((n,i)=>playTone(n,.42,'triangle',.055,i*.14));
 }
 function vibrate(pattern=18){if(vibrationOn&&navigator.vibrate)navigator.vibrate(pattern)}
 function awardXP(amount){data.xp=(data.xp||0)+amount;let level=Math.floor(data.xp/500)+1;if(level>1&&level>(data._levelNotice||1)){$('message').textContent=`🌟 LEVEL UP! YOU REACHED LEVEL ${level}!`;data._levelNotice=level;burst();playTone(880,.3,'triangle') } }
 const ACHIEVEMENTS=[['first','First Spin','Complete your first spin',()=>data.totalSpins>=1],['lucky10','Getting Lucky','Complete 10 spins',()=>data.totalSpins>=10],['highroller','High Roller','Wager 1 billion coins',()=>data.totalWagered>=1000000000],['bigwin','Big Winner','Win 100 million coins in one spin',()=>data.bestWin>=100000000],['collector','Coin Collector','Win 1 billion coins total',()=>data.totalWon>=1000000000],['veteran','Slot Veteran','Complete 100 spins',()=>data.totalSpins>=100]];
 function updateProfile(){
  const level=Math.floor((data.xp||0)/500)+1,progress=(data.xp||0)%500;
- $('playerLevel').textContent='LEVEL '+level;$('xpFill').style.width=(progress/5)+'%';$('xpText').textContent=fmt(progress)+' / 500 XP';
+ $('playerLevel').textContent='LEVEL '+level;$('xpFill').style.width=(progress/5)+'%';$('xpText').textContent=fmt(progress)+' / 500 XP';$('miniLevel').textContent='LEVEL '+level;$('miniXP').textContent=fmt(progress)+' / 500 XP';$('miniXPFill').style.width=(progress/5)+'%';
  $('statSpins').textContent=fmt(data.totalSpins||0);$('statWagered').textContent=fmt(data.totalWagered||0);$('statWon').textContent=fmt(data.totalWon||0);$('statBest').textContent=fmt(data.bestWin||0);
  const list=$('achievementList');list.innerHTML='';ACHIEVEMENTS.forEach(([id,name,desc,test])=>{const earned=(data.achievements||[]).includes(id)||test();if(earned&&!(data.achievements||[]).includes(id)){data.achievements.push(id);save()}const el=document.createElement('span');el.className='achievement'+(earned?'':' locked');el.textContent=earned?'🏅 '+name:name+' · locked';el.title=desc;list.appendChild(el)});
  const j=data.jackpots||START.jackpots;$('grandJackpot').textContent=fmt(j.grand);$('majorJackpot').textContent=fmt(j.major);$('minorJackpot').textContent=fmt(j.minor);$('miniJackpot').textContent=fmt(j.mini);
 }
 function addProgressiveContribution(bet){const j=data.jackpots||(data.jackpots={...START.jackpots});const add=Math.max(1,Math.floor(bet*.002));j.grand+=add*50;j.major+=add*20;j.minor+=add*5;j.mini+=add;}
 function payJackpot(bet){const r=Math.random();const j=data.jackpots||(data.jackpots={...START.jackpots});let tier='',prize=0;if(r<.000015){tier='GRAND';prize=j.grand;j.grand=1000000000000}else if(r<.00012){tier='MAJOR';prize=j.major;j.major=100000000000}else if(r<.0008){tier='MINOR';prize=j.minor;j.minor=10000000000}else if(r<.004){tier='MINI';prize=j.mini;j.mini=1000000000}return {tier,prize};}
-function claimWheel(){if(data.wheelClaimedOn===today())return;$('spinWheel').disabled=true;$('wheelMessage').textContent='The wheel is spinning...';$('bonusWheel').style.transform=`rotate(${1440+Math.floor(Math.random()*360)}deg)`;playTone(330,.18,'square');vibrate([25,35,25]);setTimeout(()=>{const prizes=[10000000,25000000,50000000,75000000,100000000,200000000,500000000,1000000000];const labels=['10 MILLION','25 MILLION','50 MILLION','75 MILLION','100 MILLION','200 MILLION','500 MILLION','1 BILLION'];const idx=Math.floor(Math.random()*prizes.length);data.balance+=prizes[idx];data.wheelClaimedOn=today();awardXP(50);save();update();updateProfile();$('wheelMessage').textContent=`🎉 YOU WON ${labels[idx]} VIRTUAL COINS!`; $('spinWheel').textContent='CLAIMED TODAY ✓';burst();playTone(740,.35,'triangle');vibrate([40,30,70]);},3100)}
+const WHEEL_PRIZES=[{value:10000000,label:'10 MILLION',color:'#a84624'},{value:25000000,label:'25 MILLION',color:'#b52e57'},{value:50000000,label:'50 MILLION',color:'#5635b5'},{value:100000000,label:'100 MILLION',color:'#087d91'},{value:200000000,label:'200 MILLION',color:'#438a43'},{value:500000000,label:'500 MILLION',color:'#bd811c'},{value:75000000,label:'75 MILLION',color:'#8e286d'},{value:1000000000,label:'1 BILLION',color:'#28539a'}];
+function buildWheel(){const g=$('wheelSegments');if(!g)return;g.innerHTML='';const ns='http://www.w3.org/2000/svg';WHEEL_PRIZES.forEach((prize,i)=>{const a0=(-90+i*45)*Math.PI/180,a1=(-90+(i+1)*45)*Math.PI/180;const x0=160+151*Math.cos(a0),y0=160+151*Math.sin(a0),x1=160+151*Math.cos(a1),y1=160+151*Math.sin(a1);const path=document.createElementNS(ns,'path');path.setAttribute('d',`M160 160 L${x0.toFixed(2)} ${y0.toFixed(2)} A151 151 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)} Z`);path.setAttribute('fill',prize.color);path.setAttribute('stroke','#ffe9a0');path.setAttribute('stroke-width','2.5');g.appendChild(path);const angle=-67.5+i*45,rad=angle*Math.PI/180,cx=160+91*Math.cos(rad),cy=160+91*Math.sin(rad);const text=document.createElementNS(ns,'text');text.setAttribute('x',cx);text.setAttribute('y',cy);text.setAttribute('fill','#fff');text.setAttribute('font-size',prize.value>=100000000?'12':'13');text.setAttribute('font-weight','1000');text.setAttribute('text-anchor','middle');text.setAttribute('dominant-baseline','middle');text.setAttribute('paint-order','stroke');text.setAttribute('stroke','#160a35');text.setAttribute('stroke-width','3');text.setAttribute('transform',`rotate(${angle+90} ${cx} ${cy})`);text.textContent=prize.value>=1000000000?'1B':prize.value>=100000000?'100M':(prize.value/1000000)+'M';g.appendChild(text)});}
+function claimWheel(){if(data.wheelClaimedOn===today()||wheelBusy)return;wheelBusy=true;$('spinWheel').disabled=true;$('wheelMessage').textContent='The wheel is spinning... good luck!';const idx=Math.floor(Math.random()*WHEEL_PRIZES.length),center=-67.5+idx*45,rotation=5*360+((-90-center+360)%360);$('bonusWheel').style.transform=`rotate(${rotation}deg)`;playTone(330,.18,'square');vibrate([25,35,25]);setTimeout(()=>{const prize=WHEEL_PRIZES[idx];data.balance+=prize.value;data.wheelClaimedOn=today();awardXP(50);save();update();updateProfile();$('wheelMessage').textContent=`🎉 YOU WON ${prize.label} VIRTUAL COINS!`; $('spinWheel').textContent='CLAIMED TODAY ✓';burst();playTone(740,.35,'triangle');vibrate([40,30,70]);wheelBusy=false;},5100)}
+let wheelBusy=false;
 let soundOn=true,vibrationOn=true,audioCtx=null;
 function build(){
  const host=$('reels');host.innerHTML=Array.from({length:5},(_,c)=>`<div class="reel" id="col${c}">${Array.from({length:5},(_,r)=>`<div class="symbol" id="cell${c}_${r}"></div>`).join('')}</div>`).join('');
@@ -401,7 +786,7 @@ function scoreGrid(grid,bet,multiplier=1){
  return {win,winners,scatter};
 }
 function stopColumn(c,grid){
- const reel=$(`col${c}`);reel.classList.remove('spinning');
+ const reel=$(`col${c}`);reel.classList.remove('spinning');playReelStop(c);
  reel.innerHTML=Array.from({length:5},(_,r)=>`<div class="symbol stopflash" id="cell${c}_${r}"></div>`).join('');
  for(let r=0;r<5;r++)paintSymbol($(`cell${c}_${r}`),grid[c][r]);
 }
@@ -409,9 +794,9 @@ function spin(isFree=false){
  if(busy)return;
  const bet=isFree?bonusBet:+$('bet').value;
  if(!isFree&&data.balance<bet){$('message').textContent='Not enough coins — collect a gift or bonus first!';return}
- busy=true;$('spin').disabled=true;$('message').classList.add('wait');
+ busy=true;$('spin').disabled=true;$('message').classList.add('wait');playSpinStart();
  $('message').textContent=isFree?`🎁 FREE SPIN ${bonusRemaining} — bonus multiplier!`:'🎰 Reels in motion…';
- if(!isFree){data.balance-=bet;save();update()}
+ if(!isFree){if(autoPlayActive&&!autoPlayUnlimited)autoPlayRemaining=Math.max(0,autoPlayRemaining-1);data.balance-=bet;save();update()}
  const grid=Array.from({length:5},()=>Array.from({length:5},pick));
   let mysteryCount=0;for(let c=0;c<5;c++)for(let r=0;r<5;r++)if(grid[c][r]==='❔'){grid[c][r]=symbols.filter(x=>!x.bonus&&x.e!=='🎁')[Math.floor(Math.random()*symbols.filter(x=>!x.bonus&&x.e!=='🎁').length)].e;mysteryCount++;}
   if(!isFree){data.totalSpins=(data.totalSpins||0)+1;data.totalWagered=(data.totalWagered||0)+bet;addProgressiveContribution(bet);}
@@ -445,15 +830,15 @@ function spin(isFree=false){
   let win=result.win;
   result.winners.forEach(e=>e.classList.add('hit'));
   let jackpot=false;
-  if(Math.random()<0.004){jackpot=true;let prize=bet*100;win+=prize;$('message').textContent=`👑 JACKPOT! +${fmt(prize)} VIRTUAL COINS!`;burst()}
+  if(Math.random()<0.004){jackpot=true;let prize=bet*100;win+=prize;$('message').textContent=`👑 JACKPOT! +${fmt(prize)} VIRTUAL COINS!`;burst();playJackpotFanfare()}
   data.balance+=win;data.bestWin=Math.max(data.bestWin,win);
   if(isFree){$('message').textContent=jackpot?$('message').textContent:`🎁 FREE SPIN ×${multiplier}! ${win?`WIN +${fmt(win)}`:'No match this round'}`;}
   else if(!jackpot)$('message').textContent=win?`🏆 WIN! +${fmt(win)} VIRTUAL COINS!`:'✨ No match this time. Try another spin!';
    if(mysteryCount&&!jackpot)$('message').textContent+=' ❔ '+mysteryCount+' MYSTERY SYMBOL(S) REVEALED!';
-   playTone(win?760:300,win?.22:.09,win?'triangle':'sine');if(win)vibrate([25,30,50]);
+   if(win)playWinFanfare();else playTone(310,.12,'sine',.025);if(win)vibrate([25,30,50]);
   if(win)burst();
-  addHistory(win,isFree?'FREE':'');
-  if(!isFree&&result.scatter>=3){freeSpins=5;bonusBet=bet;bonusRemaining=5;$('bonusPanel').classList.add('show');$('bonusTitle').textContent='🎉 5 FREE SPINS UNLOCKED!';$('bonusText').textContent='You landed '+result.scatter+' gift symbols. Free spins use a random virtual multiplier from ×8 up to ×500.';$('startBonus').disabled=false;}
+  if(win){data.totalWon=(data.totalWon||0)+win;}awardXP(isFree?10:20);if(win)awardXP(Math.min(100,Math.max(5,Math.floor(win/Math.max(1,bet)*10))));addHistory(win,isFree?'FREE':'');
+  if(!isFree&&result.scatter>=3){if(autoPlayActive)stopAutoPlay('AUTO PLAY PAUSED · BONUS ROUND UNLOCKED');freeSpins=5;bonusBet=bet;bonusRemaining=5;$('bonusPanel').classList.add('show');$('bonusTitle').textContent='🎉 5 FREE SPINS UNLOCKED!';$('bonusText').textContent='You landed '+result.scatter+' gift symbols. Free spins use a random virtual multiplier from ×8 up to ×500.';$('startBonus').disabled=false;}
   $('message').classList.remove('wait');save();update();updateProfile();
   if(isFree&&bonusRemaining>0){
    $('bonusText').textContent=`${bonusRemaining} free spins remaining. Next free spin starting...`;
@@ -469,6 +854,7 @@ function spin(isFree=false){
    freeSpins=0;bonusAuto=false;
   }
   busy=false;$('spin').disabled=false;
+  if(!isFree&&autoPlayActive)queueAutoPlay();
  },finish);
 }
 function setTheme(name){
@@ -486,16 +872,20 @@ function setTheme(name){
 document.querySelectorAll('.game-tab').forEach(btn=>btn.addEventListener('click',()=>{if(busy)return;setTheme(btn.dataset.game)}));
 $('daily').onclick=()=>{if(data.dailyClaimedOn===today())return;data.balance+=1000000000000;data.dailyClaimedOn=today();save();update();$('message').textContent='🎁 1 TRILLION DAILY GIFT ADDED!';burst()};
 $('bonus').onclick=()=>{if(Date.now()<(data.nextBonusAt||0))return;data.balance+=200000000;data.bonusClaimedOnce=true;data.nextBonusAt=Date.now()+1800000;save();update();$('message').textContent='⏰ 200 MILLION BONUS COLLECTED! Next bonus in 30 minutes.';burst()};
-$('spin').onclick=()=>spin(false);
+$('spin').onclick=()=>{if(autoPlayActive)stopAutoPlay('AUTO PLAY STOPPED · MANUAL SPIN');spin(false)};
+$('autoPlay').onclick=startAutoPlay;
+$('stopAuto').onclick=()=>stopAutoPlay('AUTO PLAY STOPPED BY PLAYER');
+$('bet').addEventListener('change',()=>{if(autoPlayActive)stopAutoPlay('AUTO PLAY STOPPED · BET CHANGED')});
 $('startBonus').onclick=()=>{if(busy||bonusRemaining<=0)return;bonusAuto=true;$('bonusPanel').classList.remove('show');spin(true)};
 $('giftInfo').onclick=()=>$('message').textContent='Daily gift: 1T. Timed bonus: 200M every 30 minutes. Match gift symbols to unlock free spins.';
-$('reset').onclick=()=>{if(busy)return;if(!confirm('Reset local coins, rewards and bonus progress?'))return;data={...START};freeSpins=0;bonusRemaining=0;bonusAuto=false;$('bonusPanel').classList.remove('show');$('history').innerHTML='<span class="chip">No spins yet</span>';build();save();update();$('message').textContent='Game reset. Claim your daily gift or bonus!'};
-$('sound').onclick=()=>{soundOn=!soundOn;$('sound').textContent=soundOn?'🔊 SOUND ON':'🔇 SOUND OFF';if(soundOn)playTone(660,.12)};
+$('reset').onclick=()=>{if(busy)return;stopAutoPlay('GAME RESET');if(!confirm('Reset local coins, rewards and bonus progress?'))return;data={...START};freeSpins=0;bonusRemaining=0;bonusAuto=false;$('bonusPanel').classList.remove('show');$('history').innerHTML='<span class="chip">No spins yet</span>';build();save();update();$('message').textContent='Game reset. Claim your daily gift or bonus!'};
+$('sound').onclick=()=>{soundOn=!soundOn;$('sound').textContent=soundOn?'🔊 SOUND ON':'🔇 SOUND OFF';if(soundOn){ensureAudio();startRoyalAmbience();playWinFanfare()}else{stopRoyalAmbience()}};
  $('profileBtn').onclick=()=>{$('profilePanel').classList.toggle('show');updateProfile()};
+ $('profileMini').onclick=()=>{$('profilePanel').classList.toggle('show');updateProfile();$('profilePanel').scrollIntoView({behavior:'smooth',block:'nearest'})};
  $('wheelBtn').onclick=()=>{$('wheelPanel').classList.toggle('show');$('spinWheel').disabled=data.wheelClaimedOn===today();$('spinWheel').textContent=$('spinWheel').disabled?'CLAIMED TODAY ✓':'SPIN THE WHEEL';};
  $('spinWheel').onclick=claimWheel;
 if(!data.bonusClaimedOnce)data.nextBonusAt=0;
-document.body.dataset.theme=activeTheme;setTheme(activeTheme);build();update();updateProfile();save();setInterval(()=>{update();updateProfile()},1000);
+document.body.dataset.theme=activeTheme;buildWheel();setTheme(activeTheme);build();update();updateProfile();save();$('sound').textContent='🔊 SOUND ON';setInterval(()=>{update();updateProfile()},1000);
 // Use normal browser wheel/trackpad scrolling; do not hijack pointer movement.
 </script>
 </body></html>
