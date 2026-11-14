@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#10072d">
 <meta name="description" content="LUCKY SPIN V14 — Royal virtual coin casino">
 <link rel="manifest" href="manifest.webmanifest">
-<title>LUCKY SPIN V14 — Royal Reel Experience</title>
+<title>LUCKY SPIN V15 — Royal Bet Console</title>
 <style>
 :root{--gold:#ffd65a;--cyan:#58edff;--purple:#6b24d5}
 *{box-sizing:border-box}
@@ -534,6 +534,38 @@ body{background:radial-gradient(ellipse at 50% 40%,#0a7475aa 0,transparent 36%),
 @keyframes v14JackSheen{0%,70%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
 @media(prefers-reduced-motion:reduce){.reel.spinning:before,.btn.spin:after,.jackpot:after,.symbol.stopflash,.symbol.hit,.payline-flash{animation:none}}
 
+
+/* V15 — readable bet console and level-gated stake ladder */
+.v15-controls{display:flex;align-items:center;justify-content:center;gap:clamp(8px,1vw,16px);flex-wrap:wrap;margin:7px 0 5px}
+.bet-console,.auto-console{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap}
+.bet-console{padding:7px 10px;border:1px solid #d5aa55;border-radius:13px;background:linear-gradient(135deg,#130923,#291348 55%,#11091f);box-shadow:inset 0 1px #fff2,0 4px 12px #0008}
+.control-kicker{font-size:9px;letter-spacing:1px;font-weight:1000;color:#ffe6a1;white-space:nowrap}
+.bet-step{width:34px;height:34px;border-radius:9px;border:1px solid #f0ce77;background:linear-gradient(145deg,#6b3b91,#28104c);color:#fff;font-size:24px;font-weight:900;line-height:1;box-shadow:0 3px 0 #10051d;cursor:pointer}
+.bet-step:hover:not(:disabled),.bet-max:hover:not(:disabled){filter:brightness(1.2);transform:translateY(-1px)}
+.bet-step:disabled,.bet-max:disabled{opacity:.35;cursor:not-allowed;filter:grayscale(1)}
+.bet-readout{min-width:112px;text-align:center;padding:7px 10px;border-radius:8px;border:1px solid #ffe18b;background:linear-gradient(180deg,#10091e,#24113d);color:#ffe477;font-size:clamp(15px,1.2vw,19px);font-weight:1000;letter-spacing:.4px;text-shadow:0 0 12px #ffc54c66;font-variant-numeric:tabular-nums}
+.bet-max{height:34px;padding:0 11px;border-radius:9px;border:1px solid #ffe18b;background:linear-gradient(135deg,#f5d66d,#a96b20);color:#28143a;font-size:10px;font-weight:1000;cursor:pointer;box-shadow:0 3px 0 #53300f}
+.bet-cap{display:block;flex-basis:100%;text-align:center;font-size:9px;color:#9df4ff;font-weight:1000;white-space:nowrap}
+.bet-native{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.auto-console{padding:7px 9px;border:1px solid #8061bb;border-radius:13px;background:linear-gradient(135deg,#160a2d,#29154b);box-shadow:inset 0 1px #fff2,0 4px 12px #0007}
+.auto-label{display:flex;align-items:center;gap:6px;color:#ffe6a1;font-size:9px;font-weight:1000}
+.auto-label select{min-width:112px;background:#100823;color:#fff;border:1px solid #e5c46c;border-radius:9px;padding:9px 10px;font-size:12px;font-weight:1000}
+.auto-btn{min-height:36px;padding:9px 13px;font-size:10px;white-space:nowrap}
+#autoPlay{background:linear-gradient(135deg,#168b88,#3650a5);border:1px solid #8cf7e8}
+#stopAuto{background:linear-gradient(135deg,#9d2449,#54113e);border:1px solid #ff9ab5}
+@media(min-width:1181px){
+ .v15-controls{flex-wrap:nowrap;gap:clamp(7px,.8vw,13px)}
+ .bet-console,.auto-console{flex-wrap:nowrap}
+ .bet-cap{flex-basis:auto;padding-left:5px}
+}
+@media(max-width:780px){
+ .v15-controls{gap:6px}
+ .bet-console,.auto-console{width:100%;gap:6px}
+ .bet-console{justify-content:center}
+ .auto-console{justify-content:center}
+ .bet-readout{min-width:100px}
+}
+
 </style>
 </head>
 <body>
@@ -580,12 +612,21 @@ body{background:radial-gradient(ellipse at 50% 40%,#0a7475aa 0,transparent 36%),
    <div class="reel-frame"><div class="reels" id="reels"></div></div>
    <div class="temple-caption">𓋹 MATCH 3 OR MORE • 5 REELS × 5 ROWS • VIRTUAL COINS 𓋹</div>
   </section>
-  <div class="controls v12-controls">
-   <label>BET <select id="bet" aria-label="Bet amount"></select></label>
-   <span class="bet-cap" id="betCap">LEVEL 1 MAX: 100M</span>
-   <label class="auto-label">AUTO <select id="autoCount" aria-label="Auto play spin count"><option value="20">20 spins</option><option value="30">30 spins</option><option value="100">100 spins</option><option value="infinite">∞ Unlimited</option></select></label>
-   <button class="btn auto-btn" id="autoPlay">▶ AUTO PLAY</button>
-   <button class="btn auto-btn stop-auto" id="stopAuto" disabled>■ STOP</button>
+  <div class="controls v15-controls">
+   <div class="bet-console" aria-label="Bet controls">
+    <span class="control-kicker">TOTAL BET</span>
+    <button class="bet-step" id="betDown" type="button" aria-label="Decrease bet">−</button>
+    <output class="bet-readout" id="betValue" aria-live="polite">5,000</output>
+    <button class="bet-step" id="betUp" type="button" aria-label="Increase bet">+</button>
+    <button class="bet-max" id="betMax" type="button">MAX BET</button>
+    <select id="bet" aria-label="Choose bet amount" class="bet-native"></select>
+    <span class="bet-cap" id="betCap">LEVEL 1 · MAX 100,000</span>
+   </div>
+   <div class="auto-console">
+    <label class="auto-label"><span class="control-kicker">AUTO SPINS</span><select id="autoCount" aria-label="Auto play spin count"><option value="20">20 spins</option><option value="30">30 spins</option><option value="100">100 spins</option><option value="infinite">∞ Unlimited</option></select></label>
+    <button class="btn auto-btn" id="autoPlay">▶ AUTO PLAY</button>
+    <button class="btn auto-btn stop-auto" id="stopAuto" disabled>■ STOP</button>
+   </div>
   </div>
   <div class="actionbar"><button class="btn" id="giftInfo">🎁 GIFTS</button><button class="btn spin" id="spin">⚡ SPIN ⚡</button><button class="btn" id="reset">↻ RESET</button></div>
   <div class="autoplay-status" id="autoStatus" aria-live="polite">AUTO PLAY READY · Choose 20, 30, 100 or unlimited spins</div>
@@ -701,28 +742,71 @@ function symbolSVG(e){
 function paintSymbol(el,e){el.innerHTML=symbolSVG(e);el.dataset.symbol=e;}
 
 function pick(){let r=Math.random();if(r<.012)return '❔';if(r<.047)return '🎁';let pool=symbols.filter(s=>!s.bonus&&s.e!=='🎁');return pool[Math.floor(Math.random()*pool.length)].e}
-const BET_STEPS=[1000000,5000000,10000000,25000000,50000000,100000000,250000000,500000000,1000000000,2500000000,5000000000,10000000000,25000000000,50000000000,100000000000,250000000000,500000000000,1000000000000];
+const BET_STEPS=[
+ 5000,7500,10000,15000,22500,37500,50000,75000,100000,
+ 150000,200000,250000,375000,500000,750000,1000000,
+ 1500000,2500000,5000000,7500000,10000000,15000000,25000000,
+ 50000000,75000000,100000000,150000000,250000000,500000000,
+ 750000000,1000000000,2500000000,5000000000,10000000000,
+ 25000000000,50000000000,100000000000,250000000000,
+ 500000000000,1000000000000
+];
 function playerLevel(){return Math.floor((data.xp||0)/500)+1}
 function maxBetForLevel(level=playerLevel()){
- if(level>=100)return 1000000000000;
- if(level>=75)return 500000000000;
- if(level>=50)return 250000000000;
- if(level>=40)return 100000000000;
- if(level>=30)return 50000000000;
- if(level>=25)return 25000000000;
- if(level>=20)return 10000000000;
- if(level>=15)return 5000000000;
- if(level>=10)return 1000000000;
- if(level>=7)return 500000000;
- if(level>=5)return 250000000;
- return 100000000;
+ if(level>=250)return 1000000000000;
+ if(level>=200)return 100000000000;
+ if(level>=150)return 10000000000;
+ if(level>=100)return 1000000000;
+ if(level>=75)return 500000000;
+ if(level>=50)return 100000000;
+ if(level>=30)return 25000000;
+ if(level>=20)return 5000000;
+ if(level>=15)return 1000000;
+ if(level>=10)return 500000;
+ if(level>=5)return 250000;
+ if(level>=2)return 150000;
+ return 100000;
 }
-function shortCoins(n){if(n>=1e12)return (n/1e12).toLocaleString('en-US',{maximumFractionDigits:2})+'T';if(n>=1e9)return (n/1e9).toLocaleString('en-US',{maximumFractionDigits:2})+'B';if(n>=1e6)return (n/1e6).toLocaleString('en-US',{maximumFractionDigits:2})+'M';return fmt(n)}
+function shortCoins(n){
+ if(n>=1e12)return (n/1e12).toLocaleString('en-US',{maximumFractionDigits:2})+'T';
+ if(n>=1e9)return (n/1e9).toLocaleString('en-US',{maximumFractionDigits:2})+'B';
+ if(n>=1e6)return (n/1e6).toLocaleString('en-US',{maximumFractionDigits:2})+'M';
+ if(n>=1e3)return (n/1e3).toLocaleString('en-US',{maximumFractionDigits:2})+'K';
+ return fmt(n);
+}
 function refreshBetOptions(){
- const select=$('bet');if(!select)return;const cap=maxBetForLevel(),current=Number(select.value)||10000000;select.innerHTML='';
- BET_STEPS.filter(v=>v<=cap).forEach(v=>{const opt=document.createElement('option');opt.value=String(v);opt.textContent=shortCoins(v);select.appendChild(opt)});
- const chosen=BET_STEPS.filter(v=>v<=cap&&v<=Math.max(current,10000000)).pop()||1000000;select.value=String(chosen);
- $('betCap').textContent=`LEVEL ${playerLevel()} MAX: ${shortCoins(cap)}`;
+ const select=$('bet');if(!select)return;
+ const cap=maxBetForLevel(),previous=Number(select.value)||5000;
+ const allowed=BET_STEPS.filter(v=>v<=cap);
+ select.innerHTML='';
+ allowed.forEach(v=>{
+  const opt=document.createElement('option');
+  opt.value=String(v);
+  opt.textContent=fmt(v);
+  select.appendChild(opt);
+ });
+ const chosen=allowed.includes(previous)?previous:(allowed.filter(v=>v<=previous).pop()||allowed[0]||5000);
+ select.value=String(chosen);
+ $('betValue').textContent=fmt(chosen);
+ $('betCap').textContent=`LEVEL ${playerLevel()} · MAX ${fmt(cap)}`;
+ $('betDown').disabled=chosen<=allowed[0];
+ $('betUp').disabled=chosen>=cap;
+ $('betMax').disabled=chosen>=cap;
+}
+function changeBet(direction){
+ const select=$('bet');if(!select)return;
+ if(autoPlayActive)stopAutoPlay('AUTO PLAY STOPPED · BET CHANGED');
+ const values=[...select.options].map(o=>Number(o.value));
+ let index=values.indexOf(Number(select.value));
+ index=Math.max(0,Math.min(values.length-1,index+direction));
+ select.value=String(values[index]);
+ refreshBetOptions();
+}
+function setMaxBet(){
+ const select=$('bet');if(!select)return;
+ if(autoPlayActive)stopAutoPlay('AUTO PLAY STOPPED · BET CHANGED');
+ select.value=String(maxBetForLevel());
+ refreshBetOptions();
 }
 function stopAutoPlay(reason='Auto play stopped'){
  autoPlayActive=false;if(autoPlayTimer){clearTimeout(autoPlayTimer);autoPlayTimer=null}
@@ -909,7 +993,10 @@ $('bonus').onclick=()=>{if(Date.now()<(data.nextBonusAt||0))return;data.balance+
 $('spin').onclick=()=>{if(autoPlayActive)stopAutoPlay('AUTO PLAY STOPPED · MANUAL SPIN');spin(false)};
 $('autoPlay').onclick=startAutoPlay;
 $('stopAuto').onclick=()=>stopAutoPlay('AUTO PLAY STOPPED BY PLAYER');
-$('bet').addEventListener('change',()=>{if(autoPlayActive)stopAutoPlay('AUTO PLAY STOPPED · BET CHANGED')});
+$('bet').addEventListener('change',()=>{if(autoPlayActive)stopAutoPlay('AUTO PLAY STOPPED · BET CHANGED');refreshBetOptions()});
+$('betDown').onclick=()=>changeBet(-1);
+$('betUp').onclick=()=>changeBet(1);
+$('betMax').onclick=setMaxBet;
 $('startBonus').onclick=()=>{if(busy||bonusRemaining<=0)return;bonusAuto=true;$('bonusPanel').classList.remove('show');spin(true)};
 $('giftInfo').onclick=()=>$('message').textContent='Daily gift: 1T. Timed bonus: 200M every 30 minutes. Match gift symbols to unlock free spins.';
 $('reset').onclick=()=>{if(busy)return;stopAutoPlay('GAME RESET');if(!confirm('Reset local coins, rewards and bonus progress?'))return;data={...START};freeSpins=0;bonusRemaining=0;bonusAuto=false;$('bonusPanel').classList.remove('show');$('history').innerHTML='<span class="chip">No spins yet</span>';build();save();update();$('message').textContent='Game reset. Claim your daily gift or bonus!'};
